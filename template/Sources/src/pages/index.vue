@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BlockSlideshow layout="with-departments" />
+        <BlockSlideshow layout="with-departments" :slides="slides"/>
 
         <BlockFeatures />
 
@@ -83,6 +83,19 @@ import { IProduct } from '~/interfaces/product'
 import { ICategory } from '~/interfaces/category'
 import { IPost } from '~/interfaces/post'
 import { IBrand } from '~/interfaces/brand'
+interface SlideImage {
+    ltr: string
+    rtl: string
+}
+
+interface Slide {
+    title: string
+    text: string
+    imageClassic: SlideImage
+    imageFull: SlideImage
+    imageMobile: SlideImage
+}
+
 import { BlockProductColumnsItem } from '~/interfaces/components'
 import shopApi from '~/api/shop'
 import BlockSlideshow from '~/components/blocks/block-slideshow.vue'
@@ -97,7 +110,7 @@ import BlockBrands from '~/components/blocks/block-brands.vue'
 import BlockProductColumns from '~/components/blocks/block-product-columns.vue'
 import dataShopBlockCategories from '~/data/shopBlockCategories'
 import dataBlogPosts from '~/data/blogPosts'
-
+//----------data section ------------------------//
 import dataShopBrands from '~/data/shopBrands'
 
 async function loadColumns () {
@@ -133,15 +146,17 @@ async function loadColumns () {
         const featuredProducts = runOnlyOnServer(() => shopApi.getFeaturedProducts({ limit: 8 }), null)
         const bestsellers = runOnlyOnServer(() => shopApi.getPopularProducts({ limit: 7 }), null)
         const latestProducts = runOnlyOnServer(() => shopApi.getLatestProducts({ limit: 8 }), null)
-
-        //const brands = runOnlyOnServer(() => getBrands(), null)
-        const brands = fetch(`https://strapi.api.hosteam.pro/brands/mod`).then((response) => response.json());
-
         const columns = runOnlyOnServer(() => loadColumns(), null)
+        //----Strapi DATA-----//
+        const brands = fetch(`https://strapi.api.hosteam.pro/brands/mod`).then((response) => response.json());
+        const slides = fetch(`https://strapi.api.hosteam.pro/sliders/mod`).then((response) => response.json());
+
+
 
         return {
             brands: await brands,
 
+            slides: await slides,
             featuredProducts: await featuredProducts,
             bestsellers: await bestsellers,
             latestProducts: await latestProducts,
@@ -156,7 +171,24 @@ async function loadColumns () {
 })
 export default class HomePageOne extends Vue {
     shopApi = shopApi
-
+    slides: Slide[] = [
+        {
+            title: 'Big choice of<br>Plumbing products',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
+            imageClassic: {
+                ltr: '/images/slides/slide-1-ltr.jpg',
+                rtl: '/images/slides/slide-1-rtl.jpg'
+            },
+            imageFull: {
+                ltr: '/images/slides/slide-1-full-ltr.jpg',
+                rtl: '/images/slides/slide-1-full-rtl.jpg'
+            },
+            imageMobile: {
+                ltr: '/images/slides/slide-1-mobile.jpg',
+                rtl: '/images/slides/slide-1-mobile.jpg'
+            }
+        }
+    ]
     brands: IBrand[] = dataShopBrands
 
     featuredProducts: IProduct[] | null = []

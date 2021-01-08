@@ -80,56 +80,7 @@ export default class BlockSlideshow extends Vue {
     @Prop({ type: String, default: () => 'full' }) readonly layout!: BlockSlideshowLayout
     @Getter('locale/language') language!: ILanguage
 
-    slides: Slide[] = [
-        {
-            title: 'Big choice of<br>Plumbing products',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
-            imageClassic: {
-                ltr: '/images/slides/slide-1-ltr.jpg',
-                rtl: '/images/slides/slide-1-rtl.jpg'
-            },
-            imageFull: {
-                ltr: '/images/slides/slide-1-full-ltr.jpg',
-                rtl: '/images/slides/slide-1-full-rtl.jpg'
-            },
-            imageMobile: {
-                ltr: '/images/slides/slide-1-mobile.jpg',
-                rtl: '/images/slides/slide-1-mobile.jpg'
-            }
-        },
-        {
-            title: 'Screwdrivers<br>Professional Tools',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
-            imageClassic: {
-                ltr: '/images/slides/slide-2-ltr.jpg',
-                rtl: '/images/slides/slide-2-rtl.jpg'
-            },
-            imageFull: {
-                ltr: '/images/slides/slide-2-full-ltr.jpg',
-                rtl: '/images/slides/slide-2-full-rtl.jpg'
-            },
-            imageMobile: {
-                ltr: '/images/slides/slide-2-mobile.jpg',
-                rtl: '/images/slides/slide-2-mobile.jpg'
-            }
-        },
-        {
-            title: 'One more<br>Unique header',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.',
-            imageClassic: {
-                ltr: '/images/slides/slide-3-ltr.jpg',
-                rtl: '/images/slides/slide-3-rtl.jpg'
-            },
-            imageFull: {
-                ltr: '/images/slides/slide-3-full-ltr.jpg',
-                rtl: '/images/slides/slide-3-full-rtl.jpg'
-            },
-            imageMobile: {
-                ltr: '/images/slides/slide-3-mobile.jpg',
-                rtl: '/images/slides/slide-3-mobile.jpg'
-            }
-        }
-    ]
+    slides = this.$attrs.slides
 
     get direction () {
         return this.language.direction

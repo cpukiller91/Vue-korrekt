@@ -24,7 +24,7 @@ import { SwiperOptions } from 'swiper/types/swiper-options'
 import Carousel from '~/components/shared/carousel.vue'
 import CarouselSlide from '~/components/shared/carousel-slide.vue'
 import AppLink from '~/components/shared/app-link.vue'
-import dataShopBrands from '~/data/shopBrands'
+//import dataShopBrands from '~/data/shopBrands'
 
 const carouselOptions: SwiperOptions = {
     pagination: {},
@@ -45,7 +45,7 @@ export default class BlockBrands extends Vue {
     brands = this.$attrs.brands
     carouselOptions = carouselOptions
     mounted(){
-        console.log("dataShopBrands",this.$attrs);
+        //console.log("dataShopBrands",this.$attrs);
     }
 }
 

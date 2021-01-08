@@ -15,7 +15,7 @@ module.exports = {
         name:brItem.name,
         image:"https://strapi.api.hosteam.pro"+brItem.image[0].url
       }
-      console.log(brItem.image);
+      //console.log(brItem.image);
 
     }
 
