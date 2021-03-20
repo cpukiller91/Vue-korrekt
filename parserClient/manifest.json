@@ -1,0 +1,28 @@
+{
+  "name" : "Strapi Parser Boot",
+  "version" : "0.2",
+  "description" : "Shows the content settings for the current site.",
+  "permissions": [
+    "contentSettings",
+    "tabs",
+    "http://*/*",
+    "https://adminty.lndo.site:444/",
+    "http://localhost:1337/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.webshop.schachermayer.com/*"],
+      "js": ["jquery.min.js","parser.js","jquery.cookie.js"]
+    }
+  ],
+
+  "browser_action": {
+     "default_icon": "contentSettings.png",
+     "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "manifest_version": 2
+}

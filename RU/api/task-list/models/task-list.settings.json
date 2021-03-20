@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "task_lists",
+  "info": {
+    "name": "Task List",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "enumeration",
+      "enum": [
+        "map",
+        "product"
+      ]
+    },
+    "parser_status": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

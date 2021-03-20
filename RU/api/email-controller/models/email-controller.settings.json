@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emailcontrollers",
+  "info": {
+    "name": "Email Controller",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "sender": {
+      "type": "email"
+    },
+    "name": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "message": {
+      "type": "richtext"
+    },
+    "typemail": {
+      "type": "enumeration",
+      "enum": [
+        "shop",
+        "contacts"
+      ]
+    }
+  }
+}

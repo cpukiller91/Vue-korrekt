@@ -10,21 +10,21 @@ module.exports = {
     const sliders = await strapi.query('slider').find();
     var DataIMG = {};
     for (const [key, slidersItem] of Object.entries(sliders)) {
-
+    var url = "https://de.korrekt.com.ua";
       DataIMG[key] = {
         title: slidersItem.title,
         text: slidersItem.text,
         imageClassic: {
-          ltr: "https://strapi.api.hosteam.pro"+slidersItem.imageClassic[0].url,
-          rtl: "https://strapi.api.hosteam.pro"+slidersItem.imageClassic[0].url
+          ltr: url+slidersItem.imageClassic[0].url,
+          rtl: url+slidersItem.imageClassic[0].url
         },
         imageFull: {
-          ltr: "https://strapi.api.hosteam.pro"+slidersItem.imageFull[0].url,
-          rtl: "https://strapi.api.hosteam.pro"+slidersItem.imageFull[0].url
+          ltr: url+slidersItem.imageFull[0].url,
+          rtl: url+slidersItem.imageFull[0].url
         },
         imageMobile: {
-          ltr: "https://strapi.api.hosteam.pro"+slidersItem.imageMobile[0].url,
-          rtl: "https://strapi.api.hosteam.pro"+slidersItem.imageMobile[0].url
+          ltr: url+slidersItem.imageMobile[0].url,
+          rtl: url+slidersItem.imageMobile[0].url
         }
 
       }

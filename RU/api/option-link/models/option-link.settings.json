@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "option_links",
+  "info": {
+    "name": "Option Link",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "product_id": {
+      "via": "option_id",
+      "model": "products"
+    },
+    "option_ids": {
+      "collection": "option",
+      "via": "option_links_ids",
+      "dominant": true
+    },
+    "value": {
+      "type": "string"
+    },
+    "option_id": {
+      "model": "option",
+      "via": "option_links_id"
+    },
+    "translate": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

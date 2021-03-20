@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "task_lists",
+  "info": {
+    "name": "Task-lists"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "mode": {
+      "type": "string"
+    }
+  }
+}
