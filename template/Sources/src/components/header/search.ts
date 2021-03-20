@@ -39,8 +39,7 @@ export default class Search extends Vue {
     get scope () {
         return (this.getSearchScope && this.getSearchScope()) || this.$el
     }
-
-    async mounted () {
+    async loader(){
         const scope = this.scope
 
         scope.addEventListener('focusout', this.onFocusout)
@@ -49,8 +48,11 @@ export default class Search extends Vue {
 
         this.teardown.push(() => document.removeEventListener('click', this.onGlobalClick))
         this.teardown.push(() => document.removeEventListener('focusout', this.onFocusout))
-
-        this.categories = getCategoriesWithDepth(await shopApi.getCategories({ depth: 1 }))
+        //console.log("search.ts-mounted-нада фікс-",this.$store.getters['locale/language'].locale)
+        this.categories = getCategoriesWithDepth(await shopApi.getCategories({ depth: 1 ,locale:this.$store.getters['locale/language'].locale}))
+    }
+    async mounted () {
+        await this.loader()
     }
 
     beforeDestroy () {
@@ -99,6 +101,7 @@ export default class Search extends Vue {
     }
 
     onCategoryFocus () {
+        this.loader()
         this.closeSuggestion()
     }
 
@@ -132,7 +135,8 @@ export default class Search extends Vue {
         const query = this.query.trim()
         const products = query === '' ? [] : await shopApi.getSuggestions(query, {
             category: this.category === '' ? undefined : this.category,
-            limit: 5
+            limit: 5,
+            locale:this.$store.getters['locale/language'].locale
         })
 
         if (canceled) {

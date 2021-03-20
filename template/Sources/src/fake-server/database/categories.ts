@@ -6,7 +6,7 @@ const getId = makeIdGenerator()
 
 const categoriesDef: ICategoryDef[] = [
     {
-        name: 'Instruments',
+        name: 'Инструмент',
         slug: 'instruments',
         items: 272,
         children: [
@@ -255,6 +255,7 @@ const categoriesDef: ICategoryDef[] = [
 type MakeFn<T extends IBaseCategory = IBaseCategory> = (def: ICategoryDef) => T;
 
 function makeShopCategory (def: ICategoryDef): IShopCategory {
+    //console.log("Store",this.$store.state.category.category)
     return {
         type: 'shop',
         id: getId(),

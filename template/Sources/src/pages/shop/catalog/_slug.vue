@@ -12,6 +12,8 @@ import ShopPageCategory from '~/components/shop/shop-page-category.vue'
 @Component({
     components: { ShopPageCategory },
     async asyncData ({ store, params, query }): Promise<object | void> {
+
+        query.locale = store.getters['locale/language'].locale
         const options = parseQueryOptions(query as ParsedQuery)
         const filters = parseQueryFilters(query as ParsedQuery)
 

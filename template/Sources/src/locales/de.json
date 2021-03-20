@@ -1,0 +1,64 @@
+{
+
+  "header": {
+    "departments": "Shop By Category",
+    "topbar": {
+      "aboutUs": "About Us",
+      "contacts": "Contacts",
+      "storelocation": "Store Location",
+      "trackorder": "Track Order",
+      "blog": "Blog",
+      "acount": "My Account",
+      "currency": "Currency",
+      "language": "Language"
+    }
+  },
+  "login": {
+    "page": {
+      "cardTitle": "Вхід",
+      "loginEmaill": "Email адреса",
+      "loginPassword": "Пароль",
+      "forgottenPassword": "Забули пароль?",
+      "loginRemember": "Запамятати мене",
+      "btnLogin": "Вхід",
+      "Register": "Реєстрація",
+      "phone": "Телефон",
+      "rePassword": "Повторіть Пароль"
+    },
+    "accounMmenu": {
+      "accountMenuTitle": "Log In to Your Account",
+      "forgot": "Forgot?",
+      "CreateAnAccount": "Create An Account?"
+    }
+  },
+  "home":{
+    "columns": {
+      "topRatedProducts":"Top Rated Products",
+      "specialOffers":"Special Offers",
+      "bestsellers":"Bestsellers"
+    },
+    "block": {
+      "latestNews":"Latest News",
+      "newArrivals":"New Arrivals",
+      "popularCategories":"Popular Categories",
+      "showAll":"Show All",
+      "products":"Products",
+      "featuredProducts": "Featured Products",
+      "features": {
+        "freeShipping": "Free Shipping",
+        "forOrdersFrom": "For, orders from $50",
+        "support24": "Support 24/7",
+        "callUsAnytime":"Call us anytime",
+        "100Safety": "100% Safety",
+        "onlySecurePayments":"Only secure payments",
+        "hotOffers": "Hot Offers",
+        "discountsUpTo90":"Discounts up to 90%"
+      },"banner": {
+        "button": "Shop Now",
+        "text":"Hammers, Chisels, Universal Pliers, Nippers, Jigsaws, Saws",
+        "title1": "Hundreds",
+        "title2": "Hand Tools"
+      }
+    }
+  }
+}

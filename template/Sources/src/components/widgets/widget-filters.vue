@@ -73,6 +73,7 @@ export type WidgetFiltersOffcanvas = 'always' | 'mobile'
     components: { Collapse, ArrowRoundedDown12x7Svg, FilterWrapper }
 })
 export default class WidgetFilters extends Vue {
+
     @Prop({ type: String, default: () => '' }) readonly title!: string
     @Prop({ type: String, default: () => 'mobile' }) readonly offcanvas!: WidgetFiltersOffcanvas
 
@@ -82,6 +83,10 @@ export default class WidgetFilters extends Vue {
     @Action('shop/resetFilters') resetFilters!: () => void
     @Action('shop/setFilterValue') setFilterValue!: (payload: SetFilterValuePayload) => void
 
+    // mounted () {
+    //     console.log("Filter",this.$store.state.category.category,isDefaultFilterValue)
+    // }
+
     handleValueChange ({ filter, value }: FilterChangeValueEvent) {
         this.setFilterValue({
             filter: filter.slug,
@@ -90,6 +95,7 @@ export default class WidgetFilters extends Vue {
     }
 
     getFilterValue (filterSlug: string): string {
+
         return this.values[filterSlug] || ''
     }
 }

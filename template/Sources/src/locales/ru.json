@@ -1,7 +1,14 @@
 {
   "header": {
     "topbar": {
-      "aboutUs": "О нас"
+      "aboutUs": "О Нас",
+      "contacts": "Контакты",
+      "storelocation": "Локация Магазина",
+      "trackorder": "Отследить заказ",
+      "blog": "Новости",
+      "acount": "Профиль",
+      "currency": "Валюта",
+      "language": "Язык"
     }
   }
 }

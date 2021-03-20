@@ -8,10 +8,12 @@
                     </div>
                     <div class="block-features__content">
                         <div class="block-features__title">
-                            Free Shipping
+                            {{$t('home.block.features.freeShipping')}}
+
                         </div>
                         <div class="block-features__subtitle">
-                            For orders from $50
+                            {{$t('home.block.features.forOrdersFrom')}}
+
                         </div>
                     </div>
                 </div>
@@ -22,10 +24,10 @@
                     </div>
                     <div class="block-features__content">
                         <div class="block-features__title">
-                            Support 24/7
+                            {{$t('home.block.features.support24')}}
                         </div>
                         <div class="block-features__subtitle">
-                            Call us anytime
+                            {{$t('home.block.features.callUsAnytime')}}
                         </div>
                     </div>
                 </div>
@@ -36,10 +38,10 @@
                     </div>
                     <div class="block-features__content">
                         <div class="block-features__title">
-                            100% Safety
+                            {{$t('home.block.features.100Safety')}}
                         </div>
                         <div class="block-features__subtitle">
-                            Only secure payments
+                            {{$t('home.block.features.onlySecurePayments')}}
                         </div>
                     </div>
                 </div>
@@ -50,10 +52,10 @@
                     </div>
                     <div class="block-features__content">
                         <div class="block-features__title">
-                            Hot Offers
+                            {{$t('home.block.features.hotOffers')}}
                         </div>
                         <div class="block-features__subtitle">
-                            Discounts up to 90%
+                            {{$t('home.block.features.discountsUpTo90')}}
                         </div>
                     </div>
                 </div>

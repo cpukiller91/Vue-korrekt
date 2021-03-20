@@ -10,47 +10,51 @@
                 </div>
                 <div class="topbar__item topbar__item--link">
                     <AppLink :to="$url.contacts()" class="topbar-link">
-                        Contacts
+                        {{ $t('header.topbar.contacts') }}
+
                     </AppLink>
                 </div>
                 <div class="topbar__item topbar__item--link">
                     <AppLink to="/" class="topbar-link">
-                        Store Location
+                        {{ $t('header.topbar.storelocation') }}
+
                     </AppLink>
                 </div>
                 <div class="topbar__item topbar__item--link">
                     <AppLink :to="$url.trackOrder()" class="topbar-link">
-                        Track Order
+                        {{ $t('header.topbar.trackorder') }}
+
                     </AppLink>
                 </div>
                 <div class="topbar__item topbar__item--link">
                     <AppLink :to="$url.blog()" class="topbar-link">
-                        Blog
+                        {{ $t('header.topbar.blog') }}
+
                     </AppLink>
                 </div>
                 <div class="topbar__spring" />
                 <div class="topbar__item">
                     <Dropdown
                         :items="[
-                            { title: 'Dashboard', url: $url.accountDashboard()},
+                            { title: $t('header.topbar.blog'), url: $url.accountDashboard()},
                             { title: 'Edit Profile', url: $url.accountProfile()},
                             { title: 'Order History', url: $url.accountOrders()},
                             { title: 'Addresses', url: $url.accountAddresses()},
                             { title: 'Password', url: $url.accountPassword()},
                             { title: 'Logout', url: $url.signOut()}
                         ]"
-                    >
-                        My Account
+                    > {{ $t('header.topbar.acount') }}
+
                     </Dropdown>
                 </div>
                 <div class="topbar__item">
                     <Dropdown :items="currencies" @itemClick="setCurrency($event.currency)">
-                        Currency <span class="topbar__item-value">{{ currency.code }}</span>
+                        {{ $t('header.topbar.currency') }} <span class="topbar__item-value">{{ currency.code }}</span>
                     </Dropdown>
                 </div>
                 <div class="topbar__item">
                     <Dropdown :items="languages" :with-icons="true" @itemClick="setLanguage($event.locale)">
-                        Language: <span class="topbar__item-value">{{ language.code }}</span>
+                        {{ $t('header.topbar.language') }} <span class="topbar__item-value">{{ language.code }}</span>
                     </Dropdown>
                 </div>
             </div>

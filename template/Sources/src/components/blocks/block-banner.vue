@@ -15,15 +15,17 @@
                     }"
                 />
                 <div class="block-banner__title">
-                    Hundreds
+                    {{$t('home.block.banner.title1')}}
+
                     <br class="block-banner__mobile-br">
-                    Hand Tools
+                    {{$t('home.block.banner.title2')}}
+
                 </div>
                 <div class="block-banner__text">
-                    Hammers, Chisels, Universal Pliers, Nippers, Jigsaws, Saws
+                    {{$t('home.block.banner.text')}}
                 </div>
                 <div class="block-banner__button">
-                    <span class="btn btn-sm btn-primary">Shop Now</span>
+                    <span class="btn btn-sm btn-primary">{{$t('home.block.banner.button')}}</span>
                 </div>
             </AppLink>
         </div>

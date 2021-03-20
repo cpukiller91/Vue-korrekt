@@ -78,6 +78,7 @@ export type ShopPageCategorySidebarPosition = 'start' | 'end';
         }
     }
 })
+
 export default class ShopPageCategory extends Vue {
     @Prop({ type: Number, default: () => 3 }) readonly columns!: ShopPageCategoryColumns
     @Prop({ type: String, default: () => 'grid' }) readonly viewMode!: ShopPageCategoryViewMode
@@ -130,7 +131,7 @@ export default class ShopPageCategory extends Vue {
 
     mounted () {
         if (this.offcanvas === 'mobile') {
-            shopApi.getLatestProducts({ limit: 5 }).then((result) => {
+            shopApi.getLatestProducts({ limit: 5 ,locale:this.$store.getters['locale/language'].locale}).then((result) => {
                 this.latestProducts = result
             })
         }

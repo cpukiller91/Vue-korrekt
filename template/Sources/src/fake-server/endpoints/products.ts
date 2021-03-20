@@ -37,7 +37,7 @@ function getProducts (shift: number, options: GetProductsOptions): Promise<IProd
     } else if (options.category === 'plumbing') {
         products = [...products.slice(8), ...products.slice(0, 8)].reverse()
     }
-
+    //console.log("fake/endpoint->getProducts",products)
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(products.slice(0, limit))
@@ -70,6 +70,8 @@ export function getProductsList (
     ]
 
     let items = productsData.slice(0)
+    //console.log("dssdsdssd",items)
+    //console.log("dssdsdssd",JSON.parse(JSON.stringify(items)))
 
     filters.forEach(filter => filter.makeItems(items, filterValues[filter.slug]))
 

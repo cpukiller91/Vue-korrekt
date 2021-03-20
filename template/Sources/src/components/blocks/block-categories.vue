@@ -31,11 +31,11 @@
                             </ul>
                             <div class="category-card__all">
                                 <AppLink :to="$url.category(category)">
-                                    Show All
+                                    {{$t('home.block.showAll')}}
                                 </AppLink>
                             </div>
                             <div class="category-card__products">
-                                {{ category.items }} Products
+                                {{ category.items }} {{$t('home.block.products')}}
                             </div>
                         </div>
                     </div>
@@ -55,12 +55,17 @@ import { ICategory } from '~/interfaces/category'
 type BlockCategoriesLayout = 'classic' | 'compact';
 
 @Component({
-    components: { BlockHeader, AppLink }
+    components: { BlockHeader, AppLink },
+    // async asyncData (context: Context) {
+    //     //const brands = fetch(`https://`+context.store.getters['locale/language'].locale+`.korrekt.com.ua/brands/mod`).then((response) => response.json());
+    //     console.log("block-categories.vue")
+    // }
 })
 export default class BlockCategories extends Vue {
     @Prop({ type: String, required: true }) title!: string
     @Prop({ type: String, default: () => 'classic' }) layout!: BlockCategoriesLayout
     @Prop({ type: Array, default: () => [] }) categories!: ICategory[]
+
 }
 
 </script>

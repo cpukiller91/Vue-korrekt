@@ -3,6 +3,7 @@ import {
     categoriesTreeData,
     prepareCategory
 } from '../database/categories'
+
 import AbstractFilterBuilder from './abstract'
 import { ICategoryFilter, ICategoryFilterValue } from '~/interfaces/filter'
 import { IProduct } from '~/interfaces/product'
@@ -12,6 +13,8 @@ export default class CategoryFilterBuilder extends AbstractFilterBuilder<ICatego
     value: ICategoryFilterValue = null;
 
     items: IShopCategory[] = [];
+
+
 
     test () {
         if (this.value === null) {

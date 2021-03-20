@@ -33,13 +33,16 @@ function make (context: Context) {
             return '/shop/cart'
         },
         checkout () {
-            return '/checkout'
+            return '/shop/checkout'
         },
         wishlist () {
             return '/shop/wishlist'
         },
         trackOrder () {
             return '/shop/track-order'
+        },
+        logOut () {
+            return '/account/login'
         },
         signIn () {
             return '/account'

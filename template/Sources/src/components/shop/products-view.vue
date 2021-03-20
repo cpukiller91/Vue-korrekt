@@ -94,18 +94,27 @@
                                 :value="options.limit || productsList.limit"
                                 @change="handleLimitChange"
                             >
-                                <option value="6">
-                                    6
+                                <option value="96">
+                                    96
                                 </option>
-                                <option value="12">
-                                    12
-                                </option>
-                                <option value="18">
-                                    18
+                                <option value="48">
+                                    48
                                 </option>
                                 <option value="24">
                                     24
                                 </option>
+                                <option value="18">
+                                    18
+                                </option>
+                                <option value="12">
+                                    12
+                                </option>
+                                <option value="6">
+                                    6
+                                </option>
+
+
+
                             </select>
                         </div>
                     </div>

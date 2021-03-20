@@ -56,7 +56,7 @@
                                         Leave us a Message
                                     </h4>
 
-                                    <form>
+                                    <form @submit.prevent="setContact">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="form-name">Your Name</label>
@@ -64,6 +64,7 @@
                                                     id="form-name"
                                                     class="form-control"
                                                     type="text"
+                                                    ref="name"
                                                     placeholder="Your Name"
                                                 >
                                             </div>
@@ -73,6 +74,7 @@
                                                     id="form-email"
                                                     class="form-control"
                                                     type="email"
+                                                    ref="emailc"
                                                     placeholder="Email Address"
                                                 >
                                             </div>
@@ -83,12 +85,13 @@
                                                 id="form-subject"
                                                 class="form-control"
                                                 type="text"
+                                                ref="subject"
                                                 placeholder="Subject"
                                             >
                                         </div>
                                         <div class="form-group">
                                             <label for="form-message">Message</label>
-                                            <textarea id="form-message" class="form-control" :rows="4" />
+                                            <textarea id="form-message" ref="message" class="form-control" :rows="4" />
                                         </div>
                                         <button type="submit" class="btn btn-primary">
                                             Send Message
@@ -109,6 +112,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 import PageHeader from '~/components/shared/page-header.vue'
 import BlockMap from '~/components/blocks/block-map.vue'
+import axios from "axios";
 
 @Component({
     components: { PageHeader, BlockMap },
@@ -118,6 +122,98 @@ import BlockMap from '~/components/blocks/block-map.vue'
         }
     }
 })
-export default class SitePageContactUs extends Vue { }
+export default class SitePageContactUs extends Vue {
+    $refs!: {
+        vue: Vue,
+        element: HTMLInputElement,
+        vues: Vue[],
+        elements: HTMLInputElement[],
+        emailc:HTMLInputElement,
+        name:HTMLInputElement,
+        subject:HTMLInputElement,
+        message:HTMLInputElement,
+
+    }
+    async setContact(){
+        if(!this.$refs.name.value){
+            this.$refs.name.focus()
+
+            this.$bvToast.toast('Поле Імя пусте', {
+                title: `An error occurred:`,
+                variant: "danger",
+                solid: true,
+                toaster: "b-toaster-bottom-right"
+            })
+
+        }
+        if(!this.$refs.emailc.value){
+            this.$refs.emailc.focus()
+
+            this.$bvToast.toast('Поле Email пусте', {
+                title: `An error occurred:`,
+                variant: "danger",
+                solid: true,
+                toaster: "b-toaster-bottom-right"
+            })
+
+        }
+        if(!this.$refs.subject.value){
+            this.$refs.subject.focus()
+
+            this.$bvToast.toast('Поле Тема пусте', {
+                title: `An error occurred:`,
+                variant: "danger",
+                solid: true,
+                toaster: "b-toaster-bottom-right"
+            })
+
+        }
+        if(!this.$refs.message.value){
+            this.$refs.message.focus()
+
+            this.$bvToast.toast('Поле Повідомлення пусте', {
+                title: `An error occurred:`,
+                variant: "danger",
+                solid: true,
+                toaster: "b-toaster-bottom-right"
+            })
+
+        }
+
+        let data = {
+
+            emailc: this.$refs.emailc.value,
+            name: this.$refs.name.value,
+            subject: this.$refs.subject.value,
+            message: this.$refs.message.value,
+
+        }
+
+        //const loginWith =  JSON.parse(JSON.stringify(await this.$auth.loginWith('local', { data })))
+        axios
+            .post('https://de.korrekt.com.ua/email-controller/sendemail', data)
+            .then((data) => {
+                if(data){
+                    this.$bvToast.toast("Успішно відправлено!", {
+                        title: `Ваш запит:`,
+                        variant: "success",
+                        solid: true,
+                        toaster: "b-toaster-bottom-right"
+                    })
+                }
+            })
+            .catch(error => {
+                const ErrorSign = error.response.data.data[0].messages[0].message
+                this.$bvToast.toast(ErrorSign, {
+                    title: `An error occurred:`,
+                    variant: "danger",
+                    solid: true,
+                    toaster: "b-toaster-bottom-right"
+                })
+                //console.log(error)
+            })
+        console.log("setContact /email-controller/sendemail",this.$refs)
+    }
+}
 
 </script>

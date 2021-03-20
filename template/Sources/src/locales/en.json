@@ -1,7 +1,33 @@
 {
   "header": {
     "topbar": {
-      "aboutUs": "About Us"
+      "aboutUs": "About Us",
+      "contacts": "Contacts",
+      "storelocation": "Store Location",
+      "trackorder": "Track Order",
+      "blog": "Blog",
+      "acount": "My Account",
+      "currency": "Currency",
+      "language": "Language"
+
+    }
+  },
+  "login": {
+    "page": {
+      "cardTitle": "Login",
+      "loginEmaill": "Email address",
+      "loginPassword": "Password",
+      "forgottenPassword": "Forgotten Password ",
+      "loginRemember": "Remember Me",
+      "btnLogin": "Login",
+      "Register": "Register",
+      "phone": "Enter phone ",
+      "rePassword": "Repeat Password"
+    },
+    "accounMmenu": {
+      "accountMenuTitle": "Log In to Your Account",
+      "forgot": "Forgot?",
+      "CreateAnAccount": "Create An Account?"
     }
   }
 }

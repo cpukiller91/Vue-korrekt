@@ -7,18 +7,22 @@ import Megamenu from '~/components/header/megamenu.vue'
 import Menu18x14Svg from '~/svg/menu-18x14.svg'
 import ArrowRoundedDown9x6Svg from '~/svg/arrow-rounded-down-9x6.svg'
 import ArrowRoundedRight6x9Svg from '~/svg/arrow-rounded-right-6x9.svg'
+
 import dataHeaderDepartments from '~/data/headerDepartments'
 
 @Component({
     components: { AppLink, Megamenu, Menu, Menu18x14Svg, ArrowRoundedDown9x6Svg, ArrowRoundedRight6x9Svg }
 })
+
 export default class Departments extends Vue {
     hoveredItem: INavLink | null = null
-    items: INav = dataHeaderDepartments
+    items: INav = this.$store.state.departments.departments
     isOpen: boolean = false
     isTransition: boolean = false
     fixed: boolean = false
     sticky: boolean = false
+
+
 
     get itemElements () {
         return this.$refs.items as HTMLDivElement[] || []
@@ -28,7 +32,14 @@ export default class Departments extends Vue {
         return this.$refs.submenus as HTMLDivElement[] || []
     }
 
-    mounted () {
+    methods () {
+
+
+    }
+
+    async mounted () {
+
+
         departments.watch(this.onSetArea)
 
         const content = this.$refs.content as HTMLElement
@@ -93,6 +104,7 @@ export default class Departments extends Vue {
     }
 
     openMenu (): void {
+
         if (this.fixed) {
             return
         }

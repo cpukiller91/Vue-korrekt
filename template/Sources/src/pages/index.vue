@@ -16,7 +16,7 @@
             :data-source="featuredProductsSource"
         >
             <BlockProductsCarousel
-                title="Featured Products"
+                :title="$t('home.block.featuredProducts')"
                 layout="grid-4"
                 :products="products"
                 :loading="isLoading"
@@ -28,14 +28,14 @@
         <BlockBanner/>
 
         <BlockProducts
-            title="Bestsellers"
+            :title="$t('home.columns.bestsellers')"
             layout="large-first"
             :featured-product="(bestsellers || [])[0]"
             :products="(bestsellers || []).slice(1, 7)"
         />
 
         <BlockCategories
-            title="Popular Categories"
+            :title="$t('home.block.popularCategories')"
             layout="classic"
             :categories="categories"
         />
@@ -52,7 +52,7 @@
             :data-source="latestProductsSource"
         >
             <BlockProductsCarousel
-                title="New Arrivals"
+                :title="$t('home.block.newArrivals')"
                 layout="horizontal"
                 :rows="2"
                 :products="products"
@@ -63,7 +63,7 @@
         </BlockProductsCarouselContainer>
 
         <BlockPosts
-            title="Latest News"
+            :title="$t('home.block.latestNews')"
             layout="list"
             :posts="posts"
         />
@@ -113,15 +113,15 @@ import dataBlogPosts from '~/data/blogPosts'
 //----------data section ------------------------//
 import dataShopBrands from '~/data/shopBrands'
 
-async function loadColumns () {
-    const topRated = shopApi.getTopRatedProducts({ limit: 3 })
-    const specialOffers = shopApi.getDiscountedProducts({ limit: 3 })
-    const bestsellers = shopApi.getPopularProducts({ limit: 3 })
+async function loadColumns (locale:string,translate:any) {
+    const topRated = shopApi.getTopRatedProducts({ limit: 3 ,locale:locale})
+    const specialOffers = shopApi.getDiscountedProducts({ limit: 3 ,locale:locale})
+    const bestsellers = shopApi.getPopularProducts({ limit: 3 ,locale:locale})
 
     return [
-        { title: 'Top Rated Products', products: await topRated },
-        { title: 'Special Offers', products: await specialOffers },
-        { title: 'Bestsellers', products: await bestsellers }
+        { title: translate.home.columns.topRatedProducts, products: await topRated },
+        { title: translate.home.columns.specialOffers, products: await specialOffers },
+        { title: translate.home.columns.bestsellers, products: await bestsellers }
     ]
 }
 
@@ -142,20 +142,34 @@ async function loadColumns () {
     async asyncData (context: Context) {
         context.store.commit('options/setHeaderLayout', 'default')
         context.store.commit('options/setDropcartType', 'dropdown')
+        //
+        //context.route.meta.title = "sdssd"
+        var localeData:any = []
+        if(typeof context.app.i18n != "undefined"){
+            localeData = context.app.i18n.messages
+        }
 
-        const featuredProducts = runOnlyOnServer(() => shopApi.getFeaturedProducts({ limit: 8 }), null)
-        const bestsellers = runOnlyOnServer(() => shopApi.getPopularProducts({ limit: 7 }), null)
-        const latestProducts = runOnlyOnServer(() => shopApi.getLatestProducts({ limit: 8 }), null)
-        const columns = runOnlyOnServer(() => loadColumns(), null)
+        //console.log("app lang",localeData[context.store.getters['locale/language'].locale])
+        //console.log(context.app.$i18n)
+        const featuredProducts = runOnlyOnServer(() => shopApi.getFeaturedProducts({ limit: 8 ,locale:context.store.getters['locale/language'].locale}), null)
+        const bestsellers = runOnlyOnServer(() => shopApi.getPopularProducts({ limit: 7 ,locale:context.store.getters['locale/language'].locale}), null)
+        const latestProducts = runOnlyOnServer(() => shopApi.getLatestProducts({ limit: 8 ,locale:context.store.getters['locale/language'].locale}), null)
+        const columns = runOnlyOnServer(() => loadColumns(context.store.getters['locale/language'].locale,localeData[context.store.getters['locale/language'].locale]), null)
         //----Strapi DATA-----//
-        const brands = fetch(`https://strapi.api.hosteam.pro/brands/mod`).then((response) => response.json());
-        const slides = fetch(`https://strapi.api.hosteam.pro/sliders/mod`).then((response) => response.json());
+        const brands = fetch(`https://`+context.store.getters['locale/language'].locale+`.korrekt.com.ua/brands/mod`).then((response) => response.json());
+        const slides = fetch(`https://`+context.store.getters['locale/language'].locale+`.korrekt.com.ua/sliders/mod`).then((response) => response.json());
+        const CatListHome = await fetch(`https://`+context.store.getters['locale/language'].locale+`.korrekt.com.ua/categories/categoryhomelist`).then((response) => response.json());
+        //const departments = await fetch(`https://`+context.store.getters['locale/language'].locale+`.korrekt.com.ua/products/getdepartments`).then((response) => response.json());
+        context.store.commit('category/setCategoryHome',CatListHome )
+        //context.store.commit('departments/setDepartments',departments )
 
-
-
+        //----//
+        //console.log("async--",departments)
         return {
+            keywords: 'Home async',
+            description: "Home1 async",
             brands: await brands,
-
+            locale: context.store.getters['locale/language'].locale,
             slides: await slides,
             featuredProducts: await featuredProducts,
             bestsellers: await bestsellers,
@@ -163,14 +177,20 @@ async function loadColumns () {
             columns: await columns
         }
     },
+
     head () {
         return {
-            title: 'Home Page One'
+            title: this.$store.getters['locale/language'].locale,
+            meta: [
+                { hid: 'description', name: 'description', content: 'Vue JS Radar' },
+                { hid: 'keywords', name: 'keywords', content: 'vuejs, nuxt, javascript, tutorials, development, software' }
+            ],
         }
     }
 })
 export default class HomePageOne extends Vue {
     shopApi = shopApi
+    locale: string = this.$store.getters['locale/language'].locale
     slides: Slide[] = [
         {
             title: 'Big choice of<br>Plumbing products',
@@ -195,7 +215,7 @@ export default class HomePageOne extends Vue {
 
     bestsellers: IProduct[] | null = []
 
-    categories: ICategory[] = dataShopBlockCategories
+    categories: ICategory[] = this.$store.getters['category/home_list']
 
     latestProducts: IProduct[] | null = []
 
@@ -203,25 +223,37 @@ export default class HomePageOne extends Vue {
 
     columns: BlockProductColumnsItem[] | null = []
 
-    mounted () {
+    async mounted () {
+        const LangArray = this.$i18n.messages
+        // fetch(`https://`+this.$store.getters['locale/language'].locale+`.korrekt.com.ua/products/getdepartments`)
+        //     .then((response) => {
+        //
+        //         this.$store.commit('departments/setDepartments',response.json() )
+        //     });
+        const departments = await fetch(`https://`+this.$store.getters['locale/language'].locale+`.korrekt.com.ua/products/getdepartments`).then((response) => response.json());
+        //this.$store.commit('departments/setDepartments',departments )
+        this.$store.dispatch("departments/reloadStore",departments)
+        //console.log("locale:",this.$store.getters['locale/language'].locale)
+        //console.log("data111", )
+
         if (this.bestsellers === null) {
-            shopApi.getPopularProducts({ limit: 7 }).then((products) => {
+            shopApi.getPopularProducts({ limit: 7 ,locale:this.locale}).then((products) => {
                 this.bestsellers = products
             })
         }
         if (this.columns === null) {
-            loadColumns().then((columns) => {
+            loadColumns(this.locale,LangArray[this.locale]).then((columns) => {
                 this.columns = columns
             })
         }
     }
 
     featuredProductsSource (tab: {categorySlug: string}): Promise<IProduct[]> {
-        return shopApi.getFeaturedProducts({ limit: 8, category: tab.categorySlug })
+        return shopApi.getFeaturedProducts({ limit: 8, category: tab.categorySlug ,locale:this.locale})
     }
 
     latestProductsSource (tab: {categorySlug: string}): Promise<IProduct[]> {
-        return shopApi.getLatestProducts({ limit: 8, category: tab.categorySlug })
+        return shopApi.getLatestProducts({ limit: 8, category: tab.categorySlug ,locale:this.locale})
     }
 }
 

@@ -27,6 +27,9 @@ export function parseQueryOptions (query: string | queryString.ParsedQuery) {
     if (typeof queryObject.sort === 'string') {
         optionValues.sort = queryObject.sort
     }
+    if (typeof queryObject.locale === 'string') {
+        optionValues.locale = queryObject.locale
+    }
 
     return optionValues
 }

@@ -1,5 +1,6 @@
 import { categoriesTreeData, categoriesListData, prepareCategory } from '../database/categories'
 import { IShopCategory } from '~/interfaces/category'
+import {Vue} from "vue-property-decorator";
 
 export interface GetCategoriesOptions {
     depth?: number;
@@ -20,3 +21,17 @@ export function getCategoryBySlug (slug: string, options: GetCategoryBySlugOptio
 
     return category ? Promise.resolve(prepareCategory(category, options.depth)) : Promise.reject(new Error())
 }
+// export class localeApi extends Vue {
+//     //locale:string = this.$store.getters['locale/language'].locale
+//     dataGet(){
+//         return this.$store.getters['locale/language'].locale
+//     }
+//     // locale:[] = []
+//     // static async asyncData (context: Context) {
+//     //     console.log("asyncData==>",context.store.getters['locale/language'].locale)
+//     //    return context.store.getters['locale/language'].locale
+//     //
+//     // }
+//     //
+//
+// }

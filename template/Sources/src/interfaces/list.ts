@@ -31,10 +31,13 @@ export interface IFilterableList<T, F> extends IList<T> {
 }
 
 export interface IListOptions {
+    locale?: string;
     sort?: string;
     limit?: number;
     page?: number;
+
 }
+
 
 export interface IFilterValues {
     [filterSlug: string]: string;

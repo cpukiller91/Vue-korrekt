@@ -7,6 +7,7 @@ import { WishlistState } from '~/store/wishlist'
 import { CartState } from '~/store/cart'
 import { LocaleState } from '~/store/locale'
 import { ShopState } from '~/store/shop'
+import { ActionTree } from 'vuex'
 
 export interface RootState {
     cart: CartState;
@@ -19,3 +20,13 @@ export interface RootState {
     locale: LocaleState;
     shop: ShopState;
 }
+
+export const actions: ActionTree<any, any> = {
+    async nuxtServerInit({ dispatch }) {
+        dispatch('menu/nuxtServerInit')
+        dispatch('shop/nuxtServerInit')
+        dispatch('departments/nuxtServerInit')
+        dispatch('category/nuxtServerInit')
+    }
+}
+

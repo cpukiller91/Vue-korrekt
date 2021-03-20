@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "locales",
+  "info": {
+    "name": "Locale"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "lnKey": {
+      "type": "string"
+    },
+    "id_brands": {
+      "via": "id_locales",
+      "collection": "brands"
+    },
+    "sliders": {
+      "via": "locales",
+      "collection": "slider"
+    },
+    "menus": {
+      "via": "locales",
+      "collection": "menu"
+    }
+  }
+}

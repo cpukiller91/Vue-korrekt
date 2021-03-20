@@ -53,7 +53,7 @@ const config: NuxtConfig = {
         const options: NuxtOptionsHead = {
             title: process.env.npm_package_name || '',
             titleTemplate (titleChunk: string) {
-                return titleChunk ? `${titleChunk} — Stroyka` : 'Stroyka'
+                return titleChunk ? `${titleChunk} — Korrekt` : 'Korrekt'
             },
             htmlAttrs: {
                 lang: currentLanguage?.locale!,
@@ -124,7 +124,10 @@ const config: NuxtConfig = {
     */
     modules: [
         // Doc: https://bootstrap-vue.js.org
-        'bootstrap-vue/nuxt'
+        'bootstrap-vue/nuxt',
+        '@nuxtjs/axios',
+        '@nuxtjs/auth-next',
+        '@nuxtjs/toast',
     ],
     /*
     ** Build configuration
@@ -187,7 +190,45 @@ const config: NuxtConfig = {
 
             return urls
         }
+    },
+    auth: {
+        strategies: {
+            local: {
+                endpoints: {
+                    login: {
+                        url: "https://de.korrekt.com.ua/auth/local",
+                        method: "post",
+                        propertyName: "data.token",
+                    },
+                    logout: false,
+                    user: false,
+                },
+                tokenType: '',
+                tokenName: 'x-auth',
+                autoFetchUser: false
+            },
+        },
+        redirect: {
+            login: '/account/dashboard',
+            logout: '/account/login',
+            callback: '/account/login',
+            home: '/account/dashboard'
+        }
+    },
+    toast: {
+        position: 'top-center',
+        register: [ // Register custom toasts
+            {
+                name: 'my-error',
+                message: 'Oops...Something went wrong',
+                options: {
+                    type: 'error'
+                }
+            }
+        ]
     }
+
+
 }
 
 // noinspection JSUnusedGlobalSymbols

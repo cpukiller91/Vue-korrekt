@@ -91,6 +91,10 @@ export default class Page extends Vue {
     address: IUserAddress = dataAccountAddresses[0]
 
     orders: IOrderSummary[] = dataAccountOrders.slice(0, 3)
+
+    async onLogOut () {
+
+    }
 }
 
 </script>

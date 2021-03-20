@@ -9,10 +9,14 @@ import headerNavigation from '~/data/headerNavigation'
 @Component({
     components: { AppLink, Megamenu, Menu, ArrowRoundedDown9x6Svg }
 })
+
 export default class NavLinks extends Vue {
-    items: INav = headerNavigation
+    items: INav = this.$store.state.menu.menu
     hoveredItem: INavLink | null = null
 
+    mounted () {
+       //console.log("strapiMenu",this.$store.state.menu)
+    }
     get itemElements () {
         return this.$refs.items as HTMLElement[] || []
     }

@@ -69,7 +69,9 @@ export const mutations: MutationTree<ShopState> = {
             categorySlug: payload.categorySlug,
             options: payload.options,
             filters: payload.filters
+
         })
+
     },
     fetchCategorySuccess (state, payload: FetchCategorySuccessPayload) {
         state.init = true
@@ -108,6 +110,9 @@ let cancelPreviousProductsListRequest = () => {}
 
 // noinspection JSUnusedGlobalSymbols
 export const actions: ActionTree<ShopState, {}> = {
+    async nuxtServerInit({commit}){
+
+    },
     async init ({ dispatch, commit }, payload: ShopInitPayload): Promise<void> {
         commit('init', payload)
 
@@ -130,6 +135,7 @@ export const actions: ActionTree<ShopState, {}> = {
             request = shopApi.getCategoryBySlug(payload.categorySlug)
         } else {
             request = Promise.resolve(null)
+            //request = shopApi.getCategories()
         }
 
         const category = await request
@@ -137,7 +143,7 @@ export const actions: ActionTree<ShopState, {}> = {
         if (canceled && !process.server) {
             return
         }
-
+        //console.log("store/shop->fetchCategorySuccess",category)
         commit('fetchCategorySuccess', { category })
     },
     async fetchProductsList ({ commit, state }): Promise<void> {
@@ -152,13 +158,19 @@ export const actions: ActionTree<ShopState, {}> = {
 
         if (state.categorySlug !== null) {
             filters = { ...filters, category: state.categorySlug }
+
         }
 
-        const productsList = await shopApi.getProductsList(state.options, filters)
+        var productsList = await shopApi.getProductsList(state.options, filters)
+
+        // const res = await fetch(`https://strapi.api.hosteam.pro/products/list`)
+        // let json = await res.json();
+
 
         if (canceled && !process.server) {
             return
         }
+        //console.log("filtersStore",productsList)
 
         commit('fetchProductsListSuccess', { productsList })
     },
@@ -200,6 +212,7 @@ export const getters: GetterTree<ShopState, {}> = {
         return store.options
     },
     filters (store) {
+        //
         return store.filters
     },
     query (store) {

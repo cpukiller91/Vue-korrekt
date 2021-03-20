@@ -1,0 +1,64 @@
+{
+  "header": {
+    "departments": "Купуйте за категоріями",
+    "topbar": {
+      "aboutUs": "Про Нас",
+      "contacts": "Контакти",
+      "storelocation": "Де ми знаходимось",
+      "trackorder": "Відстежити замовлення",
+      "blog": "Новини",
+      "acount": "Кабынет",
+      "currency": "Валюта",
+      "language": "Мова"
+    }
+  },
+  "login": {
+    "page": {
+      "cardTitle": "Вхід",
+      "loginEmaill": "Email адреса",
+      "loginPassword": "Пароль",
+      "forgottenPassword": "Забули пароль?",
+      "loginRemember": "Запамятати мене",
+      "btnLogin": "Вхід",
+      "Register": "Реєстрація",
+      "phone": "Телефон",
+      "rePassword": "Повторіть Пароль"
+    },
+    "accounMmenu": {
+      "accountMenuTitle": "Log In to Your Account",
+      "forgot": "Forgot?",
+      "CreateAnAccount": "Create An Account?"
+    }
+  },
+  "home":{
+    "columns": {
+      "topRatedProducts":"Популярні товари",
+      "specialOffers":"Спеціальні пропозиції",
+      "bestsellers":"Найчастіше купують"
+    },
+    "block": {
+      "latestNews":"Останні новини",
+      "newArrivals":"Нові надходження",
+      "popularCategories":"Популярні Категорії",
+      "showAll":"Показати Всі",
+      "products":"Продуктів",
+      "featuredProducts": "Рекомендовані товари",
+      "features": {
+        "freeShipping": "Доставка",
+        "forOrdersFrom": "При замовленні від $50 безкоштовна",
+        "support24": "Підтримка 24/7",
+        "callUsAnytime":"Телефонуйте нам в любий час",
+        "100Safety": "Безпечно 100%",
+        "onlySecurePayments":"Тільки захищена оплата",
+        "hotOffers": "Гарячі пропозиції",
+        "discountsUpTo90":"Знижки до 90%"
+      },
+      "banner": {
+        "button": "Здійснити покупку",
+        "text":"Молотки, зубила, універсальні плоскогубці, кусачки, лобзики, пилки",
+        "title1": "Сотні",
+        "title2": "Ручних інструментів"
+      }
+    }
+  }
+}

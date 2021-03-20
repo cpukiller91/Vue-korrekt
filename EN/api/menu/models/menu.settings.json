@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "menus",
+  "info": {
+    "name": "Menu"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "modes": {
+      "type": "enumeration",
+      "enum": [
+        "menu",
+        "megamenu"
+      ]
+    },
+    "locales": {
+      "collection": "locale",
+      "via": "menus",
+      "dominant": true
+    }
+  }
+}

@@ -148,8 +148,8 @@ async function loadColumns () {
         const bestsellers = runOnlyOnServer(() => shopApi.getPopularProducts({ limit: 7 }), null)
         const latestProducts = runOnlyOnServer(() => shopApi.getLatestProducts({ limit: 8 }), null)
         const columns = runOnlyOnServer(() => loadColumns(), null)
-        const brands = fetch(`https://strapi.api.hosteam.pro/brands/mod`).then((response) => response.json());
-        const slides = fetch(`https://strapi.api.hosteam.pro/sliders/mod`).then((response) => response.json());
+        const brands = fetch(`https://de.korrekt.com.ua/brands/mod`).then((response) => response.json());
+        const slides = fetch(`https://de.korrekt.com.ua/sliders/mod`).then((response) => response.json());
         return {
             brands: await brands,
             slides: await slides,

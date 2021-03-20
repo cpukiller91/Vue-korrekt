@@ -10,7 +10,7 @@
 
             <!-- desktop site__header -->
             <header class="site__header d-lg-block d-none">
-                <Header />
+                <Header/>
             </header>
             <!-- desktop site__header / end -->
 

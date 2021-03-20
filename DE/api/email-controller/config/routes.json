@@ -1,0 +1,36 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/email-controller/sendemail",
+      "handler": "email-controller.sendEmail",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/email-controller",
+      "handler": "email-controller.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/email-controller",
+      "handler": "email-controller.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/email-controller",
+      "handler": "email-controller.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
