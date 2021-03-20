@@ -1,0 +1,143 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/products/getpopularproducts",
+      "handler": "getPopularProducts.getPopularProducts",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/products/getdiscountedproducts",
+      "handler": "getDiscountedProducts.getDiscountedProducts",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/products/gettopratedproducts",
+      "handler": "getTopRatedProducts.getTopRatedProducts",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/products/getfeaturedproducts",
+      "handler": "getFeaturedProducts.getFeaturedProducts",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/products/getlatestproducts",
+      "handler": "getLatestProducts.getLatestProducts",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/products",
+      "handler": "products.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/products/slug",
+      "handler": "products.getProductBySlug",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/products/list",
+      "handler": "products.list",
+      "config": {
+        "policies": []
+      }
+    },{
+      "method": "GET",
+      "path": "/products/filter",
+      "handler": "filter.filter",
+      "config": {
+        "policies": []
+      }
+    },{
+      "method": "GET",
+      "path": "/products/get-active",
+      "handler": "products.getactive",
+      "config": {
+        "policies": []
+      }
+    },{
+      "method": "POST",
+      "path": "/products/detail",
+      "handler": "products.detail",
+      "config": {
+        "policies": []
+      }
+    },{
+      "method": "POST",
+      "path": "/products/add",
+      "handler": "products.add",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/products/count",
+      "handler": "products.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/products/:id",
+      "handler": "products.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/products",
+      "handler": "products.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/products/:id",
+      "handler": "products.update",
+      "config": {
+        "policies": []
+      }
+    },{
+      "method": "POST",
+      "path": "/products/:id",
+      "handler": "products.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/products/:id",
+      "handler": "products.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

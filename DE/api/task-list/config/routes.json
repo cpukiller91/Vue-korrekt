@@ -1,0 +1,59 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/task-lists",
+      "handler": "task-list.find",
+      "config": {
+        "policies": []
+      }
+    },{
+      "method": "GET",
+      "path": "/task-lists/mode",
+      "handler": "task-list.mode",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/task-lists/count",
+      "handler": "task-list.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/task-lists/:id",
+      "handler": "task-list.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/task-lists",
+      "handler": "task-list.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/task-lists/:id",
+      "handler": "task-list.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/task-lists/:id",
+      "handler": "task-list.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
