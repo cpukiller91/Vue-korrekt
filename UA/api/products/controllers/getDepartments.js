@@ -7,6 +7,7 @@ module.exports = {
         "title as title",
         "alias as url")
       .whereIn('category', parent)
+      .andWhere('visible', 0)
       //.where('popular', true)
       .limit(limit)
     ));

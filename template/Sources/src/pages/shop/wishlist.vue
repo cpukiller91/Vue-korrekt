@@ -1,10 +1,10 @@
 <template>
     <div>
         <PageHeader
-            title="Wishlist"
+            :title="$t('products.Wishlist')"
             :breadcrumb="[
-                { title: 'Home', url: '' },
-                { title: 'Wishlist', url: '' },
+                { title: 'Головна', url: '/' },
+                { title: 'Список бажань', url: '' },
             ]"
         />
 
@@ -13,11 +13,11 @@
                 <div class="container">
                     <div class="block-empty__body">
                         <div class="block-empty__message">
-                            Your wish list is empty!
+                            {{$t('products.YourWishList')}}
                         </div>
                         <div class="block-empty__actions">
                             <AppLink to="/" class="btn btn-primary btn-sm">
-                                Continue
+                                {{$t('cart.Continue')}}
                             </AppLink>
                         </div>
                     </div>
@@ -30,19 +30,19 @@
                         <thead class="wishlist__head">
                             <tr class="wishlist__row">
                                 <th class="wishlist__column wishlist__column--image">
-                                    Image
+                                    {{$t('products.Image')}}
                                 </th>
                                 <th class="wishlist__column wishlist__column--product">
-                                    Product
+                                    {{$t('cart.Product')}}
                                 </th>
                                 <th class="wishlist__column wishlist__column--stock">
-                                    Stock Status
+                                    {{$t('products.StockStatus')}}
                                 </th>
                                 <th class="wishlist__column wishlist__column--price">
-                                    Price
+                                    {{$t('cart.Price')}}
                                 </th>
-                                <th class="wishlist__column wishlist__column--tocart" aria-label="Add to cart" />
-                                <th class="wishlist__column wishlist__column--remove" aria-label="Remove" />
+                                <th class="wishlist__column wishlist__column--tocart" :aria-label="$t('cart.Addtocart')" />
+                                <th class="wishlist__column wishlist__column--remove" :aria-label="$t('cart.Remove')" />
                             </tr>
                         </thead>
                         <tbody class="wishlist__body">
@@ -62,13 +62,13 @@
                                     <div class="wishlist__product-rating">
                                         <Rating :value="item.rating" />
                                         <div class="wishlist__product-rating-legend">
-                                            {{ item.reviews }} Reviews
+                                            {{ item.reviews }} {{$t('cart.Reviews')}}
                                         </div>
                                     </div>
                                 </td>
                                 <td class="wishlist__column wishlist__column--stock">
                                     <div class="badge badge-success">
-                                        In Stock
+                                        {{$t('cart.InStock')}}
                                     </div>
                                 </td>
                                 <td class="wishlist__column wishlist__column--price">
@@ -87,7 +87,7 @@
                                             ]"
                                             @click="run"
                                         >
-                                            Add To Cart
+                                            {{$t('cart.Addtocart')}}
                                         </button>
                                     </AsyncAction>
                                 </td>
@@ -102,7 +102,7 @@
                                                 'btn btn-light btn-sm btn-svg-icon',
                                                 {'btn-loading': isLoading}
                                             ]"
-                                            aria-label="Remove"
+                                            :aria-label="$t('cart.Remove')"
                                             @click="run"
                                         >
                                             <Cross12Svg />

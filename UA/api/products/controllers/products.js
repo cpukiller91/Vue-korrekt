@@ -223,6 +223,7 @@ module.exports = {
       delete data.category
     }
     console.log('query',data)
+
     //const id_in = []
     //var id_ina = [1,2,3,4,5,6,7]
     var id_ina = await this.filterResID(data)

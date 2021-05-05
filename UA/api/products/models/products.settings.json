@@ -40,8 +40,8 @@
       "via": "product_id"
     },
     "parent_id": {
-      "model": "category",
-      "via": "products_id"
+      "via": "products_id",
+      "model": "category"
     },
     "content": {
       "type": "richtext"

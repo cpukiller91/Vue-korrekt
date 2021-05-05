@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "themes",
+  "info": {
+    "name": "Theme"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "AuthorName": {
+      "type": "string"
+    },
+    "profileUrl": {
+      "type": "string"
+    },
+    "ContactsAddress": {
+      "type": "string"
+    },
+    "ContactsEmail": {
+      "type": "string"
+    },
+    "ContactsPhone": {
+      "type": "string"
+    }
+  }
+}

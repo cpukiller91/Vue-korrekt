@@ -16,6 +16,7 @@
                 </div>
 
                 <div v-if="layout === 'default'" class="nav-panel__departments">
+
                     <Departments ref="departments" @onSetArea="onSetDepartmentsArea" />
                 </div>
 

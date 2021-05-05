@@ -1,5 +1,5 @@
 <template>
-    <ShopPageCategory />
+    <ShopPageCategory :columns="5" view-mode="grid"/>
 </template>
 
 <script lang="ts">

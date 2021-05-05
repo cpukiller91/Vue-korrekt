@@ -15,7 +15,8 @@
             </div>
             <div class="site-header__phone">
                 <div class="site-header__phone-title">
-                    Customer Service
+                    {{$t('home.HelpCustomer')}}
+
                 </div>
                 <div class="site-header__phone-number">
                     {{ theme.contacts.phone }}
@@ -49,6 +50,11 @@ export default class Header extends Vue {
     theme = theme
 
     @State((state: RootState) => state.options.headerLayout) layout!: HeaderLayout
+
+    async mounted(){
+        const themes = await fetch(`https://`+this.$store.getters['locale/language'].locale+`.korrekt.com.ua/themes-get`).then((response) => response.json());
+        this.theme = themes
+    }
 }
 
 </script>

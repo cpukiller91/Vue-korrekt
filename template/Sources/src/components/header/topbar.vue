@@ -1,5 +1,6 @@
 <template>
     <!-- .topbar -->
+    <!--
     <div class="site-header__topbar topbar">
         <div class="topbar__container container">
             <div class="topbar__row">
@@ -33,6 +34,7 @@
                     </AppLink>
                 </div>
                 <div class="topbar__spring" />
+                <!--
                 <div class="topbar__item">
                     <Dropdown
                         :items="[
@@ -57,9 +59,11 @@
                         {{ $t('header.topbar.language') }} <span class="topbar__item-value">{{ language.code }}</span>
                     </Dropdown>
                 </div>
+
             </div>
         </div>
     </div>
+    -->
     <!-- .topbar / end -->
 </template>
 

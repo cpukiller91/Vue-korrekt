@@ -44,7 +44,7 @@
                 class="btn btn-secondary btn-sm"
                 @click="resetFilters"
             >
-                Reset
+              {{$t('Reset')}}
             </button>
         </div>
     </div>

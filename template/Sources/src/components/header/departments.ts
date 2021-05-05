@@ -16,7 +16,7 @@ import dataHeaderDepartments from '~/data/headerDepartments'
 
 export default class Departments extends Vue {
     hoveredItem: INavLink | null = null
-    items: INav = this.$store.state.departments.departments
+    items: INav = this.$store.getters['departments/all'].departments
     isOpen: boolean = false
     isTransition: boolean = false
     fixed: boolean = false

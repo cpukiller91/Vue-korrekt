@@ -3,6 +3,7 @@
         <h4 class="widget__title">
             {{ title }}
         </h4>
+
         <div class="widget-products__list">
             <div
                 v-for="product in products"
@@ -23,6 +24,7 @@
                             {{ product.name }}
                         </AppLink>
                     </div>
+
                     <div class="widget-products__prices">
                         <template v-if="product.compareAtPrice">
                             <span class="widget-products__new-price">
@@ -48,8 +50,9 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import { IProduct } from '~/interfaces/product'
 import AppLink from '~/components/shared/app-link.vue'
 
+
 @Component({
-    components: { AppLink }
+    components: {AppLink }
 })
 export default class WidgetProducts extends Vue {
     @Prop({ type: String, default: () => '' }) readonly title!: string

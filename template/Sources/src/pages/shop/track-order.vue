@@ -2,8 +2,8 @@
     <div>
         <PageHeader
             :breadcrumb="[
-                { title: 'Home', url: '' },
-                { title: 'Track Order', url: '' },
+                { title: $t('home.title'), url: '/' },
+                { title: $t('checkout.TrackOrder'), url: '' },
             ]"
         />
 
@@ -15,36 +15,34 @@
                             <div class="card-body">
                                 <div class="card-title text-center">
                                     <h1 class="pt-lg-0 pt-2">
-                                        Track Order
+                                        {{$t('checkout.TrackOrder')}}
                                     </h1>
                                 </div>
                                 <p class="mb-4 pt-2">
-                                    Vestibulum sem odio, ullamcorper a imperdiet tincidunt
-                                    sed magna felis, consequat a erat ut, rutrum finibus
-                                    odio.
+                                    {{$t('checkout.TrackOrderDesc')}}
                                 </p>
                                 <form>
                                     <div class="form-group">
-                                        <label for="track-order-id">Order ID</label>
+                                        <label for="track-order-id">{{$t('checkout.OrderID')}}</label>
                                         <input
                                             id="track-order-id"
                                             class="form-control"
                                             type="text"
-                                            placeholder="Order ID"
+                                            :placeholder="$t('checkout.OrderID')"
                                         >
                                     </div>
                                     <div class="form-group">
-                                        <label for="track-email">Email address</label>
+                                        <label for="track-email">{{$t('checkout.EmailAddress')}}</label>
                                         <input
                                             id="track-email"
                                             class="form-control"
                                             type="email"
-                                            placeholder="Email address"
+                                            :placeholder="$t('checkout.EmailAddress')"
                                         >
                                     </div>
                                     <div class="pt-3">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                            Track
+                                            {{$t('header.topbar.trackorder')}}
                                         </button>
                                     </div>
                                 </form>

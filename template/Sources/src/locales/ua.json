@@ -1,5 +1,127 @@
 {
+  "products": {
+    "YouHaveNot": "Ви не вибрали жодної продукції для порівняння!",
+    "Comparison": "Порівняння",
+
+    "Wishlist": "Список бажань",
+    "Image": "Превю",
+    "StockStatus": "Наявність в магазині",
+    "InStock": "В наявності",
+    "YourWishList": "Список бажань пустий!",
+    "Nomatchingitems": "Не знайдено нічого по вашому запиту",
+    "TryResettingTheFilters": "Скиньте фільтр і спробуйте знову",
+    "ResetFilters": "Скинути Фільтр",
+    "Showing": "Показати",
+    "of": "з",
+    "products": "продуктів",
+    "Default": "За замовчуванням",
+    "NameAZ": "По імені (A-Z)",
+    "NameZA": "По імені (Z-A)",
+    "Show": "Товарів на сторінці",
+    "SortBy": "Відсортувати"
+  },
+  "Reset": "Скинути фільтр",
+  "category": {
+    "Filters": "Фільтр",
+    "LatestProducts": "Переглянуті продукти"
+  },
+  "dashboard": {
+    "RecentOrders": "Останні замовлення",
+    "Order": "Заказ",
+    "Date": "Дата",
+    "Status": "Статус",
+    "Total": "Всього",
+    "for": "от",
+    "item": "елемент(ов)",
+    "EditAddress": "Редактировать Адресс",
+    "DefaultAddress": "Адресса за замовчуванням"
+  },
+  "Profile": {
+    "EditProfile": "Редагувати профіль",
+    "Save": "Зберегти"
+  },
+  "checkout": {
+    "OrderID": "ID Замовлення",
+    "TrackOrder": "Відстежувати замовлення",
+    "TrackOrderDesc": "Vestibulum sem odio, ullamcorper a imperdiet tincidunt sed magna felis, consequat a erat ut, rutrum finibus odio.",
+    "ViewCart": "Корзина",
+    "Checkout": "Оформити",
+    "ReturningCustomer": "Повернення клієнта?",
+    "ClickHereToLogin": "Клацніть тут, щоб увійти",
+    "BillingDetails": "Платіжні реквізити",
+    "FirstName": "Ім'я",
+    "LastName": "Прізвище",
+    "CompanyName": "Назва компанії",
+    "Country": "Країна",
+    "SelectACountry": "Виберіть країну..",
+    "StreetAddress": "Адреса вулиці",
+    "Apartment": "Квартира, люкс, квартира тощо",
+    "TownCity": "Місто",
+    "StateCounty": "Область",
+    "PostcodeZIP": "Поштовий індекс / ZIP",
+    "EmailAddress": "Адреса електронної пошти",
+    "Phone": "Телефон",
+    "CreateAnAccount": "Створити аккаунт?",
+    "ShippingDetails": "Деталі доставки",
+    "ShipTo": "Відправити на іншу адресу?",
+    "OrderNotes" : "Примітки до замовлення",
+    "YourOrder": "Ваше замовлення",
+    "IHaveRead": "Я прочитав веб-сайт і погоджуюсь з ним",
+    "TermsAndConditions": " правила та умови",
+    "PlaceOrder": "Розміщувати замовлення",
+    "Optional": "Не обовязково"
+  },
+  "cart": {
+    "Rating": "Рейтинг",
+    "Sale": "Розпродаж",
+    "Hot": "Гаряча пропозиція",
+    "New": "Нове",
+    "Quantity": "Кількість",
+    "Reviews": "Переглядів",
+    "Wishlist": "Список бажань",
+    "Compare": "Порівняти",
+    "Availability": "Наявність",
+    "Addtocart": "В корзину",
+    "ShoppingCart": "Корзина покупця",
+    "YourShopping": "Ваша корзина пуста!",
+    "Continue": "Продовжити",
+    "Image": "Превю",
+    "Product": "Назва",
+    "Price": "Ціна",
+    "Total": "Сума",
+    "Remove": "Видалити",
+    "Password": "Пароль",
+    "ChangePassword": "Змінити Пароль",
+    "CurrentPassword": "Поточний Пароль",
+    "NewPassword": "Новий Пароль",
+    "ReenterNewPassword": "Повторіть новий пароль",
+    "Change": "Змінити",
+    "CouponCode": "Скидочний Купон",
+    "ApplyCoupon": "Примінити Купон",
+    "ContinueShopping": "Вернутись в магазин",
+    "UpdateCart": "Обновити Корзину",
+    "CartTotals": "Сума Корзини",
+    "Subtotal": "Всього до сплати",
+    "CalculateShipping": "Підрахувати оставку",
+    "ProceedToCheckout": "Оформити замовлення"
+  },
+  "footer":{
+    "newsletter":"Подписка на розсилку",
+    "praesent":"Praesent pellentesque volutpat ex, vitae auctor lorem pulvinar mollis felis at lacinia.",
+    "EmailAddress":"Електронна адреса...",
+    "Subscribe": "Підпишіться",
+    "Follow": "Слідкуйте за нами в соціальних мережах",
+    "Contact": "Зв'яжіться з нами",
+    "ContactDesc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in feugiat lorem. Pellentque ac placerat\n tellus.",
+    "MonSat": "Mon-Sat 10:00pm - 7:00pm"
+  },
   "header": {
+    "search": {
+      "Searchover":"Пошук по 140 000 товарів",
+      "Sitesearch":"Пошук по сайту",
+      "AllCategories":"Всі категорії",
+      "Category":"Категорії"
+    },
     "departments": "Купуйте за категоріями",
     "topbar": {
       "aboutUs": "Про Нас",
@@ -7,12 +129,15 @@
       "storelocation": "Де ми знаходимось",
       "trackorder": "Відстежити замовлення",
       "blog": "Новини",
-      "acount": "Кабынет",
+      "acount": "Кабінет користувача",
       "currency": "Валюта",
       "language": "Мова"
     }
   },
   "login": {
+    "dashboard": {
+      "Navigation": "Навігація"
+    },
     "page": {
       "cardTitle": "Вхід",
       "loginEmaill": "Email адреса",
@@ -25,12 +150,14 @@
       "rePassword": "Повторіть Пароль"
     },
     "accounMmenu": {
-      "accountMenuTitle": "Log In to Your Account",
-      "forgot": "Forgot?",
-      "CreateAnAccount": "Create An Account?"
+      "accountMenuTitle": "Авторизація",
+      "forgot": "забув(ла)?",
+      "CreateAnAccount": "Створити новий акаунт?"
     }
   },
   "home":{
+    "HelpCustomer": "Підтримка клієнтів",
+    "title": "Домашня",
     "columns": {
       "topRatedProducts":"Популярні товари",
       "specialOffers":"Спеціальні пропозиції",

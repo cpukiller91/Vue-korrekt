@@ -9,17 +9,17 @@
 
         <div v-if="productsList.items.length === 0" class="products-view__empty">
             <div class="products-view__empty-title">
-                No matching items
+                {{$t('products.Nomatchingitems')}}
             </div>
             <div class="products-view__empty-subtitle">
-                Try resetting the filters
+                {{$t('products.TryResettingTheFilters')}}
             </div>
             <button
                 type="button"
                 class="btn btn-primary btn-sm"
                 @click="$store.dispatch('shop/resetFilters')"
             >
-                Reset filters
+                {{$t('products.ResetFilters')}}
             </button>
         </div>
 
@@ -37,7 +37,7 @@
                     <div class="view-options__filters-button">
                         <button type="button" class="filters-button" @click="$emit('openSidebar')">
                             <Filters16Svg class="filters-button__icon" />
-                            <span class="filters-button__title">Filters</span>
+                            <span class="filters-button__title">{{$t('category.Filters')}}</span>
                             <span v-if="filtersCount" class="filters-button__counter">{{ filtersCount }}</span>
                         </button>
                     </div>
@@ -61,11 +61,11 @@
                         </div>
                     </div>
                     <div class="view-options__legend">
-                        Showing {{ productsList.from }}—{{ productsList.to }} of {{ productsList.total }} products
+                        {{$t('products.Showing')}} {{ productsList.from }}—{{ productsList.to }} {{$t('products.of')}} {{ productsList.products }}
                     </div>
                     <div class="view-options__divider" />
                     <div class="view-options__control">
-                        <label for="view-options-sort">Sort By</label>
+                        <label for="view-options-sort">{{$t('products.SortBy')}}</label>
                         <div>
                             <select
                                 id="view-options-sort"
@@ -74,19 +74,19 @@
                                 @change="handleSortChange"
                             >
                                 <option value="default">
-                                    Default
+                                    {{$t('products.Default')}}
                                 </option>
                                 <option value="name_asc">
-                                    Name (A-Z)
+                                    {{$t('products.NameAZ')}}
                                 </option>
                                 <option value="name_desc">
-                                    Name (Z-A)
+                                    {{$t('products.NameZA')}}
                                 </option>
                             </select>
                         </div>
                     </div>
                     <div class="view-options__control">
-                        <label for="view-options-limit">Show</label>
+                        <label for="view-options-limit">{{$t('products.Show')}}</label>
                         <div>
                             <select
                                 id="view-options-limit"
@@ -100,6 +100,9 @@
                                 <option value="48">
                                     48
                                 </option>
+                                <option value="30">
+                                    30
+                                </option>
                                 <option value="24">
                                     24
                                 </option>
@@ -109,6 +112,10 @@
                                 <option value="12">
                                     12
                                 </option>
+                                <option value="15">
+                                    15
+                                </option>
+
                                 <option value="6">
                                     6
                                 </option>

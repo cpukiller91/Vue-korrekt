@@ -7,12 +7,13 @@ module.exports = {
     //var List = [{id:2,parentid:0,name:"Категорії",slug:"catalog"}]
     var List = JSON.parse(JSON.stringify(await knex('categories')
       .select( "categories.category as parentid","title as name","id","alias as slug")
-      .where('category', parent)
-      //.whereIn('id', parent)
+      .where('category', parent).andWhere('visible', 0)
+      //.whereIn('category', [629, 17829])
     ));
     var one = JSON.parse(JSON.stringify(await knex('categories')
         .select( "categories.category as parentid","title as name","id","alias as slug")
         .where('id', parent)
+      //.andWhere('visible', 0)
     ));
 
     for (const [key, galReq] of Object.entries(List)) {
@@ -51,7 +52,9 @@ module.exports = {
     //var List = [{id:2,parentid:0,name:"Категорії",slug:"catalog"}]
     const List = JSON.parse(JSON.stringify(await knex('categories')
       .select( "id")
-      .where('alias', slug)));
+      .where('alias', slug)
+      .andWhere('visible', 0)
+      ));
       if(List.length>0){
         return List[0].id;
       }else{
@@ -195,7 +198,7 @@ module.exports = {
   async getProductList (ctx) {
 
     //typeof ctx.query.limit
-    var limit = 48;
+    var limit = 15;
     var sort;
     var data = ctx.query
     var page = 1;
@@ -256,6 +259,10 @@ module.exports = {
       await knex('products')
         .count("id", {as: 'total'})
         .where('parentlist', 'like', '%::' + cId + '::%')
+        //.andWhere('visible', 1)
+        // .where('parentlist', 'like', '%::629::%')
+        // .orWhere('parentlist', 'like', '%::17829::%')
+
         .andWhere((builder) => {
           if (typeof pRange != 'undefined')
             builder.where('price', '>', pRange[0])
@@ -318,44 +325,48 @@ module.exports = {
 
     }
 
-    if (filter_state == true ){
-
-        products = JSON.parse(JSON.stringify(
-        await knex('products')
-          .select('products.id').select('products.title').select('alias').select('url').select('parent_id')
-          .select('content').select('price').select('rating').select('reviews').select('reviews')
-          .select('sku').select('availability').select('badges').select('Featured').select('TopRated')
-          .select('Discounted').select('Popular').select('options.key')
-
-          .join('option_links', 'option_links.product_id', 'products.id')
-          .join('options', 'option_links.option_id', 'options.id')
-
-          .where('parentlist', 'like', '%::' + cId + '::%')
-          .where(qb)
-          .where((builder) => {
-
-            if (typeof pRange != 'undefined')
-              builder.where('price', '>', pRange[0])
-                .where('price', '<', pRange[1])
-
-          })
-          .orderBy('products.id').orderBy('title').orderBy('alias')
-          .orderBy('url').orderBy('parent_id')
-          .orderBy('content').orderBy('price').orderBy('rating')
-          .orderBy('reviews').orderBy('reviews')
-          .orderBy('sku').orderBy('availability')
-          .orderBy('badges').orderBy('Featured').orderBy('TopRated')
-          .orderBy('Discounted').orderBy('Popular').orderBy('options.key')
-
-          .limit(limit)
-          .offset(start)
-      ));
-      total = products.length
-  }else{
+  //   if (filter_state == true ){
+  //
+  //       products = JSON.parse(JSON.stringify(
+  //       await knex('products')
+  //         .select('products.id').select('products.title').select('alias').select('url').select('parent_id')
+  //         .select('content').select('price').select('rating').select('reviews').select('reviews')
+  //         .select('sku').select('availability').select('badges').select('Featured').select('TopRated')
+  //         .select('Discounted').select('Popular').select('options.key')
+  //
+  //         .join('option_links', 'option_links.product_id', 'products.id')
+  //         .join('options', 'option_links.option_id', 'options.id')
+  //
+  //         .where('parentlist', 'like', '%::' + cId + '::%')
+  //         .where(qb)
+  //         .where((builder) => {
+  //
+  //           if (typeof pRange != 'undefined')
+  //             builder.where('price', '>', pRange[0])
+  //               .where('price', '<', pRange[1])
+  //
+  //         })
+  //         .orderBy('products.id').orderBy('title').orderBy('alias')
+  //         .orderBy('url').orderBy('parent_id')
+  //         .orderBy('content').orderBy('price').orderBy('rating')
+  //         .orderBy('reviews').orderBy('reviews')
+  //         .orderBy('sku').orderBy('availability')
+  //         .orderBy('badges').orderBy('Featured').orderBy('TopRated')
+  //         .orderBy('Discounted').orderBy('Popular').orderBy('options.key')
+  //
+  //         .limit(limit)
+  //         .offset(start)
+  //     ));
+  //     total = products.length
+  // }
+  //   else {}
         products = JSON.parse(JSON.stringify(
         await knex('products')
           //.join('option_links', 'option_links.product_id', 'products.id')
           .where('parentlist', 'like', '%::' + cId + '::%')
+          //.andWhere('visible', 1)
+          // .where('parentlist', 'like', '%::629::%')
+          // .orWhere('parentlist', 'like', '%::17829::%')
           .where((builder) => {
 
             if (typeof pRange != 'undefined')
@@ -366,7 +377,7 @@ module.exports = {
           .limit(limit)
           .offset(start)
       ));
-    }
+
     const priceRequest = JSON.parse(JSON.stringify(
       await knex('products')
         .where('parentlist', 'like','%::'+cId+'::%')
@@ -404,50 +415,51 @@ module.exports = {
     // WHERE `option_id` NOT IN (2,4) and `parentlist` LIKE '%:10:%'
     // GROUP BY option_links.value,options.id,options.title
     // ORDER BY options.id
-    const attribFilter = JSON.parse(JSON.stringify(
-      await knex('option_links')
-      //.whereIn('option_links.product_id', [1,2,3])
-      .whereNotIn('options.id', [2,4,78])
-      .where('parentlist', 'like','%::'+cId+'::%')
-      .join('options', 'option_links.option_id', 'options.id')
-      .join('products', 'option_links.product_id', 'products.id')
-      .select('options.id')
-      .select('option_links.value')
-      .select('options.title')
-      .select('options.key')
-      // .select('option_links.product_id as id')
-      // .select('option_links.value')
-      // .select('options.key')
-      .count('key', {as: 'count'})
-      .where((builder) => {
-        if (typeof pRange != 'undefined')
-          builder.where('price', '>', pRange[0])
-            .where('price', '<', pRange[1])
 
-      })
-      .groupBy('options.id').groupBy('options.title')
-      .groupBy('options.key').groupBy('options.key')
-      .groupBy('option_links.value')
-      .orderBy("options.id","ASC")
-    ))
-    if(attribFilter.length<600){
-
-      //console.log(attribFilter)
-      var arr2 = attribFilter.reduce( (a,b) => {
-        var i = a.findIndex( x => x.id === b.id);
-        return i === -1 ? a.push({
-          id : b.id,
-          value: [],
-          type: "check",
-          slug: b.key,
-          name: b.title,
-          items : []
-        }) : a[i].items.push({name: b.value, slug: b.value,count:b.count}), a;
-      }, []);
-
-      //console.log(arr2)
-
-    }
+    // const attribFilter = JSON.parse(JSON.stringify(
+    //   await knex('option_links')
+    //   //.whereIn('option_links.product_id', [1,2,3])
+    //   .whereNotIn('options.id', [2,4,78])
+    //   .where('parentlist', 'like','%::'+cId+'::%')
+    //   .join('options', 'option_links.option_id', 'options.id')
+    //   .join('products', 'option_links.product_id', 'products.id')
+    //   .select('options.id')
+    //   .select('option_links.value')
+    //   .select('options.title')
+    //   .select('options.key')
+    //   // .select('option_links.product_id as id')
+    //   // .select('option_links.value')
+    //   // .select('options.key')
+    //   .count('key', {as: 'count'})
+    //   .where((builder) => {
+    //     if (typeof pRange != 'undefined')
+    //       builder.where('price', '>', pRange[0])
+    //         .where('price', '<', pRange[1])
+    //
+    //   })
+    //   .groupBy('options.id').groupBy('options.title')
+    //   .groupBy('options.key').groupBy('options.key')
+    //   .groupBy('option_links.value')
+    //   .orderBy("options.id","ASC")
+    // ))
+    // if(attribFilter.length<600){
+    //
+    //   //console.log(attribFilter)
+    //   var arr2 = attribFilter.reduce( (a,b) => {
+    //     var i = a.findIndex( x => x.id === b.id);
+    //     return i === -1 ? a.push({
+    //       id : b.id,
+    //       value: [],
+    //       type: "check",
+    //       slug: b.key,
+    //       name: b.title,
+    //       items : []
+    //     }) : a[i].items.push({name: b.value, slug: b.value,count:b.count}), a;
+    //   }, []);
+    //
+    //   //console.log(arr2)
+    //
+    // }
 
     var GalList = [];
     var items = [];

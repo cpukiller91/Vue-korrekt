@@ -70,6 +70,11 @@ import theme from '~/data/theme'
 })
 export default class Footer extends Vue {
     theme = theme
+    async mounted(){
+        const themes = await fetch(`https://`+this.$store.getters['locale/language'].locale+`.korrekt.com.ua/themes-get`).then((response) => response.json());
+        this.theme = themes
+        //console.log(themes)
+    }
 }
 
 </script>

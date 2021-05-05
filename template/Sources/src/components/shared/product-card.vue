@@ -25,13 +25,13 @@
 
         <div v-if="product.badges.length" class="product-card__badges-list">
             <div v-if="product.badges.includes('sale')" class="product-card__badge product-card__badge--sale">
-                Sale
+                {{$t('cart.Sale')}}
             </div>
             <div v-if="product.badges.includes('hot')" class="product-card__badge product-card__badge--hot">
-                Hot
+                {{$t('cart.Hot')}}
             </div>
             <div v-if="product.badges.includes('new')" class="product-card__badge product-card__badge--new">
-                New
+                {{$t('cart.New')}}
             </div>
         </div>
 
@@ -51,7 +51,7 @@
             <div class="product-card__rating">
                 <Rating class="product-card__rating-stars" :value="product.rating" />
                 <div class=" product-card__rating-legend">
-                    {{ product.reviews }} Reviews
+                    {{ product.reviews }} {{$t('cart.Reviews')}}
                 </div>
             </div>
 
@@ -66,7 +66,7 @@
         </div>
         <div class="product-card__actions">
             <div class="product-card__availability">
-                Availability:
+                {{$t('cart.Availability')}}:
                 <span class="text-success">In Stock</span>
             </div>
 
@@ -89,7 +89,7 @@
                         ]"
                         @click="run"
                     >
-                        Add To Cart
+                        {{$t('cart.Addtocart')}}
                     </button>
                 </AsyncAction>
                 <AsyncAction v-slot:default="{ run, isLoading }" :action="() => $store.dispatch('cart/add', { product })">
@@ -101,7 +101,7 @@
                         ]"
                         @click="run"
                     >
-                        Add To Cart
+                        {{$t('cart.Addtocart')}}
                     </button>
                 </AsyncAction>
 

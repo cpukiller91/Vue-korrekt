@@ -2,22 +2,28 @@
     <div>
         <client-only>
             <PageHeader
-                title="Checkout"
+                :title="$t('checkout.Checkout')"
                 :breadcrumb="[
-                    { title: 'Home', url: $url.home() },
-                    { title: 'Shopping Cart', url: $url.cart() },
-                    { title: 'Checkout', url: '' },
+                    { title: $t('home.title'), url: $url.home() },
+                    { title: $t('cart.ShoppingCart'), url: $url.cart() },
+                    { title: $t('checkout.Checkout'), url: '' },
                 ]"
             />
 
             <div class="checkout block">
-                <div class="container">
+                <form
+                    id="checkout"
+                    @submit.prevent="checkForm"
+                    method="post"
+                    ref="form"
+                >
+                    <div class="container">
                     <div class="row">
                         <div class="col-12 mb-3">
                             <div class="alert alert-primary alert-lg">
-                                Returning customer?
+                                {{$t('checkout.ReturningCustomer')}}
                                 <AppLink :to="$url.signIn()">
-                                    Click here to login
+                                    {{$t('checkout.ClickHereToLogin')}}
                                 </AppLink>
                             </div>
                         </div>
@@ -26,45 +32,48 @@
                             <div class="card mb-lg-0">
                                 <div class="card-body">
                                     <h3 class="card-title">
-                                        Billing details
+                                        {{$t('checkout.BillingDetails')}}
                                     </h3>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="checkout-first-name">First Name</label>
+                                            <label for="checkout-first-name">{{$t('checkout.FirstName')}}</label>
                                             <input
                                                 id="checkout-first-name"
                                                 class="form-control"
                                                 type="text"
-                                                placeholder="First Name"
+                                                name="FirstName"
+                                                :placeholder="$t('checkout.FirstName')"
                                             >
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="checkout-last-name">Last Name</label>
+                                            <label for="checkout-last-name">{{$t('checkout.LastName')}}</label>
                                             <input
                                                 id="checkout-last-name"
                                                 class="form-control"
                                                 type="text"
-                                                placeholder="Last Name"
+                                                name="last"
+                                                :placeholder="$t('checkout.LastName')"
                                             >
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="checkout-company-name">
-                                            Company Name
-                                            <span class="text-muted">(Optional)</span>
+                                            {{$t('checkout.CompanyName')}}
+                                            <span class="text-muted">({{$t('checkout.Optional')}})</span>
                                         </label>
                                         <input
                                             id="checkout-company-name"
                                             class="form-control"
                                             type="text"
-                                            placeholder="Company Name"
+                                            name="company"
+                                            :placeholder="$t('checkout.CompanyName')"
                                         >
                                     </div>
                                     <div class="form-group">
-                                        <label for="checkout-country">Country</label>
-                                        <select id="checkout-country" class="form-control">
-                                            <option>Select a country...</option>
+                                        <label for="checkout-country">{{$t('checkout.Country')}}</label>
+                                        <select name="country" id="checkout-country" class="form-control">
+                                            <option>{{$t('checkout.SelectACountry')}}</option>
                                             <option>United States</option>
                                             <option>Russia</option>
                                             <option>Italy</option>
@@ -75,67 +84,74 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="checkout-street-address">Street Address</label>
+                                        <label for="checkout-street-address">{{$t('checkout.StreetAddress')}}</label>
                                         <input
                                             id="checkout-street-address"
                                             class="form-control"
                                             type="text"
-                                            placeholder="Street Address"
+                                            name="street"
+                                            :placeholder="$t('checkout.StreetAddress')"
                                         >
                                     </div>
                                     <div class="form-group">
                                         <label for="checkout-address">
-                                            Apartment, suite, unit etc.
-                                            <span class="text-muted">(Optional)</span>
+                                            {{$t('checkout.Apartment')}}
+                                            <span class="text-muted">({{$t('checkout.Optional')}})</span>
                                         </label>
                                         <input
                                             id="checkout-address"
                                             class="form-control"
                                             type="text"
+                                            name="apartment"
                                         >
                                     </div>
                                     <div class="form-group">
-                                        <label for="checkout-city">Town / City</label>
+                                        <label for="checkout-city">{{$t('checkout.TownCity')}}</label>
                                         <input
                                             id="checkout-city"
                                             class="form-control"
                                             type="text"
+                                            name="town"
                                         >
                                     </div>
                                     <div class="form-group">
-                                        <label for="checkout-state">State / County</label>
+                                        <label for="checkout-state">{{$t('checkout.StateCounty')}}</label>
                                         <input
                                             id="checkout-state"
                                             class="form-control"
                                             type="text"
+                                            name="state"
                                         >
                                     </div>
                                     <div class="form-group">
-                                        <label for="checkout-postcode">Postcode / ZIP</label>
+                                        <label for="checkout-postcode">{{$t('checkout.PostcodeZIP')}}</label>
                                         <input
                                             id="checkout-postcode"
                                             class="form-control"
                                             type="text"
+                                            name="postcode"
                                         >
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="checkout-email">Email address</label>
+                                            <label for="checkout-email">{{$t('checkout.EmailAddress')}}</label>
                                             <input
                                                 id="checkout-email"
                                                 class="form-control"
                                                 type="email"
-                                                placeholder="Email address"
+                                                name="email"
+                                                :placeholder="$t('checkout.EmailAddress')"
                                             >
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="checkout-phone">Phone</label>
+                                            <label for="checkout-phone">{{$t('checkout.Phone')}}</label>
                                             <input
                                                 id="checkout-phone"
                                                 class="form-control"
                                                 type="text"
-                                                placeholder="Phone"
+                                                name="phone"
+                                                :placeholder="$t('checkout.Phone')"
                                             >
                                         </div>
                                     </div>
@@ -148,13 +164,14 @@
                                                         id="checkout-create-account"
                                                         class="input-check__input"
                                                         type="checkbox"
+                                                        name="reate-account"
                                                     >
                                                     <span class="input-check__box" />
                                                     <Check9x7Svg class="input-check__icon" />
                                                 </span>
                                             </span>
                                             <label class="form-check-label" for="checkout-create-account">
-                                                Create an account?
+                                                {{$t('checkout.CreateAnAccount')}}
                                             </label>
                                         </div>
                                     </div>
@@ -162,7 +179,7 @@
                                 <div class="card-divider" />
                                 <div class="card-body">
                                     <h3 class="card-title">
-                                        Shipping Details
+                                        {{$t('checkout.ShippingDetails')}}
                                     </h3>
 
                                     <div class="form-group">
@@ -173,23 +190,24 @@
                                                         id="checkout-different-address"
                                                         class="input-check__input"
                                                         type="checkbox"
+                                                        name="different-address"
                                                     >
                                                     <span class="input-check__box" />
                                                     <Check9x7Svg class="input-check__icon" />
                                                 </span>
                                             </span>
                                             <label class="form-check-label" for="checkout-different-address">
-                                                Ship to a different address?
+                                                {{$t('checkout.ShipTo')}}
                                             </label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="checkout-comment">
-                                            Order notes
-                                            <span class="text-muted">(Optional)</span>
+                                            {{$t('checkout.OrderNotes')}}
+                                            <span class="text-muted">({{$t('checkout.Optional')}})</span>
                                         </label>
-                                        <textarea id="checkout-comment" class="form-control" :rows="4" />
+                                        <textarea id="checkout-comment" name="comment" class="form-control" :rows="4" />
                                     </div>
                                 </div>
                             </div>
@@ -199,14 +217,14 @@
                             <div class="card mb-0">
                                 <div class="card-body">
                                     <h3 class="card-title">
-                                        Your Order
+                                        {{$t('checkout.YourOrder')}}
                                     </h3>
 
                                     <table class="checkout__totals">
                                         <thead class="checkout__totals-header">
                                             <tr>
-                                                <th>Product</th>
-                                                <th>Total</th>
+                                                <th>{{$t('cart.Product')}}</th>
+                                                <th>{{$t('cart.Total')}}</th>
                                             </tr>
                                         </thead>
                                         <tbody class="checkout__totals-products">
@@ -217,7 +235,7 @@
                                         </tbody>
                                         <tbody v-if="cart.totals.length > 0" class="checkout__totals-subtotals">
                                             <tr>
-                                                <th>Subtotal</th>
+                                                <th>{{$t('cart.Subtotal')}}</th>
                                                 <td>{{ $price(cart.subtotal) }}</td>
                                             </tr>
                                             <tr v-for="(total, index) in cart.totals" :key="index">
@@ -227,7 +245,7 @@
                                         </tbody>
                                         <tfoot class="checkout__totals-footer">
                                             <tr>
-                                                <th>Total</th>
+                                                <th>{{$t('cart.Total')}}</th>
                                                 <td>{{ $price(cart.total) }}</td>
                                             </tr>
                                         </tfoot>
@@ -280,15 +298,16 @@
                                                         id="checkout-terms"
                                                         class="input-check__input"
                                                         type="checkbox"
+                                                        name="checkout-terms"
                                                     >
                                                     <span class="input-check__box" />
                                                     <Check9x7Svg class="input-check__icon" />
                                                 </span>
                                             </span>
                                             <label class="form-check-label" for="checkout-terms">
-                                                I have read and agree to the website
+                                                {{$t('checkout.IHaveRead')}}
                                                 <AppLink :to="$url.terms()">
-                                                    terms and conditions
+                                                    {{$t('checkout.TermsAndConditions')}}
                                                 </AppLink>
                                                 *
                                             </label>
@@ -296,13 +315,14 @@
                                     </div>
 
                                     <button type="submit" class="btn btn-primary btn-xl btn-block">
-                                        Place Order
+                                        {{$t('checkout.PlaceOrder')}}
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </client-only>
     </div>
@@ -337,14 +357,42 @@ export default class Page extends Vue {
     payments: IPayment[] = dataShopPayments
 
     clickTimer: any = null
+    $refs!: {
+        vue: Vue,
+        element: HTMLInputElement,
+        vues: Vue[],
+        elements: HTMLInputElement[],
+        name:HTMLInputElement,
+        // emaill:HTMLInputElement,
+        // password:HTMLInputElement,
+        // confirmp:HTMLInputElement,
+        // registerp:HTMLInputElement,
+        // phone:HTMLInputElement
 
+    }
     // noinspection JSUnusedGlobalSymbols
+    async mounted(){
+        const CatListHome = await fetch(`https://`+this.$store.getters['locale/language'].locale+`.korrekt.com.ua/payments`).then((response) => response.json());
+        this.payments = CatListHome
+        //console.log("dsdsdsd",CatListHome)
+    }
+
     beforeMount () {
         if (this.cart.quantity < 1) {
             this.$router.push(this.$url.cart())
         }
     }
+    checkForm(){
+        // this.$refs.forEach(function(item){
+        //     console.log(item)
+        // })
 
+        // if(!this.$refs.name.value){
+        //
+        //     alert("prevent")
+        // }
+        console.log(this.$refs)
+    }
     handlePaymentChange (event: InputEvent) {
         if (event.target instanceof HTMLInputElement) {
             this.currentPayment = event.target.value

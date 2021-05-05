@@ -13,7 +13,7 @@
         <div ref="body" class="block-sidebar__body">
             <div class="block-sidebar__header">
                 <div class="block-sidebar__title">
-                    Filters
+                    {{$t("category.Filters")}}
                 </div>
                 <button class="block-sidebar__close" type="button" @click="$emit('closeSidebar')">
                     <Cross20Svg />

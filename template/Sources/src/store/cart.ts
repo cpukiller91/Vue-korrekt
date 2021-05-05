@@ -74,16 +74,16 @@ function calcTotals (items: CartItem[]): CartTotal[] {
     const subtotal = calcSubtotal(items)
 
     return [
-        {
-            type: 'shipping',
-            title: 'Shipping',
-            price: 25
-        },
-        {
-            type: 'tax',
-            title: 'Tax',
-            price: subtotal * 0.2
-        }
+        // {
+        //     type: 'shipping',
+        //     title: 'Shipping',
+        //     price: 25
+        // },
+        // {
+        //     type: 'tax',
+        //     title: 'Tax',
+        //     price: subtotal * 0.2
+        // }
     ]
 }
 
@@ -120,7 +120,7 @@ export const mutations: MutationTree<CartState> = {
 
         Vue.notify({
             type: 'success',
-            text: `Product "${product.name}" added to cart!`
+            text: `"${product.name}" додано в корзину!`
         })
     },
     remove (state, payload: CartRemovePayload) {

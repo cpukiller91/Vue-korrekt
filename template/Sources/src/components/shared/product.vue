@@ -55,9 +55,7 @@
                     </div>
                 </div>
                 <div class="product__description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                    ornare, mi in ornare elementum, libero nibh lacinia urna, quis
-                    convallis lorem erat at purus. Maecenas eu varius nisi.
+
                 </div>
                 <ul class="product__features">
                     <li>Speed: 750 RPM</li>
@@ -68,8 +66,8 @@
                 </ul>
                 <ul class="product__meta">
                     <li class="product__meta-availability">
-                        Availability:
-                        <span class="text-success">In Stock</span>
+                        {{$t('cart.Availability')}}:
+                        <span class="text-success">{{product.availability}}</span>
                     </li>
                     <li>
                         Brand:
@@ -77,14 +75,19 @@
                             Wakita
                         </AppLink>
                     </li>
-                    <li>SKU: 83690/32</li>
+                    <li>SKU: {{product.sku}}</li>
+                    <li>
+                        <VueBarcode v-bind:value="product.slug" >
+                            Show this if the rendering fails.
+                        </VueBarcode>
+                    </li>
                 </ul>
             </div>
 
             <div class="product__sidebar">
                 <div class="product__availability">
-                    Availability:
-                    <span class="text-success">In Stock</span>
+                    {{$t('cart.Availability')}}:
+                    <span class="text-success">{{product.availability}}</span>
                 </div>
 
                 <div class="product__prices">
@@ -99,9 +102,11 @@
                     <template v-if="!product.compareAtPrice">
                         {{ $price(product.price) }}
                     </template>
+
                 </div>
 
                 <form class="product__options">
+                    <!--
                     <div class="form-group product__option">
                         <div class="product__option-label">
                             Color
@@ -168,9 +173,10 @@
                             </div>
                         </div>
                     </div>
+-->
                     <div class="form-group product__option">
                         <!--suppress XmlInvalidId -->
-                        <label for="product-quantity" class="product__option-label">Quantity</label>
+                        <label for="product-quantity" class="product__option-label">{{$t('cart.Quantity')}}</label>
                         <div class="product__actions">
                             <div class="product__actions-item">
                                 <InputNumber
@@ -193,7 +199,7 @@
                                         :disabled="!quantity"
                                         @click="run"
                                     >
-                                        Add to cart
+                                        {{$t('cart.Addtocart')}}
                                     </button>
                                 </AsyncAction>
                             </div>
@@ -202,7 +208,7 @@
                                     <button
                                         type="button"
                                         data-toggle="tooltip"
-                                        title="Wishlist"
+                                        :title="$t('cart.Wishlist')"
                                         :class="[
                                             'btn btn-secondary btn-svg-icon btn-lg',
                                             {'btn-loading': isLoading}
@@ -218,7 +224,7 @@
                                     <button
                                         type="button"
                                         data-toggle="tooltip"
-                                        title="Compare"
+                                        :title="$t('cart.Compare')"
                                         :class="[
                                             'btn btn-secondary btn-svg-icon btn-lg',
                                             {'btn-loading': isLoading}
@@ -234,7 +240,7 @@
                 </form>
             </div>
 
-            <div class="product__footer">
+            <!--div class="product__footer">
                 <div class="product__tags tags">
                     <div class="tags__list">
                         <AppLink to="/">
@@ -273,12 +279,13 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </template>
 
 <script lang="ts">
+//
 
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { IProduct } from '~/interfaces/product'
@@ -289,11 +296,12 @@ import AsyncAction from '~/components/shared/async-action.vue'
 import InputNumber from '~/components/shared/input-number.vue'
 import Wishlist16Svg from '~/svg/wishlist-16.svg'
 import Compare16Svg from '~/svg/compare-16.svg'
+import VueBarcode from '~/components/barcode/barcode.vue'
 
 export type ProductLayout = 'standard' | 'sidebar' | 'columnar' | 'quickview';
 
 @Component({
-    components: { Rating, AppLink, ProductGallery, AsyncAction, Wishlist16Svg, Compare16Svg, InputNumber }
+    components: { VueBarcode,Rating, AppLink, ProductGallery, AsyncAction, Wishlist16Svg, Compare16Svg, InputNumber }
 })
 export default class Product extends Vue {
     @Prop({ type: String, required: true }) readonly layout!: ProductLayout
@@ -307,6 +315,12 @@ export default class Product extends Vue {
         }
 
         return this.$store.dispatch('cart/add', { product: this.product, quantity: this.quantity })
+    }
+
+    print () {
+        console.log("dsd")
+        //printJS('https://printjs.crabbly.com/images/print-01-highres.jpg', 'image')
+        //window.alert("sds")
     }
 }
 

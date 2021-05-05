@@ -74,7 +74,7 @@
                 </button>
             </div>
             <div class="account-menu__form-link">
-                <AppLink :to="$url.signUp()">
+                <AppLink to="/account/login">
                    {{$t('login.accounMmenu.CreateAnAccount')}}
                 </AppLink>
             </div>

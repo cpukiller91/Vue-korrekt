@@ -7,7 +7,6 @@
 
             <slot name="sidebar" />
         </div>
-
         <div v-if="columns <= 3" class="container">
             <div :class="`shop-layout shop-layout--sidebar--${sidebarPosition}`">
                 <div v-if="sidebarPosition === 'start'" class="shop-layout__sidebar">

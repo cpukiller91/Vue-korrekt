@@ -58,7 +58,10 @@ export default class Search extends Vue {
     beforeDestroy () {
         this.teardown.forEach(x => x())
     }
-
+    enterClicked(){
+        //this.onFocusout()
+        //alert("dsd")
+    }
     onFocusout () {
         setTimeout(() => {
             const scope = this.scope

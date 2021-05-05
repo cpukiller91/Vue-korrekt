@@ -14,7 +14,7 @@
                     </div>
                     <div class="profile-card__edit">
                         <AppLink :to="$url.accountProfile()" class="btn btn-secondary btn-sm">
-                            Edit Profile
+                            {{$t('Profile.EditProfile')}}
                         </AppLink>
                     </div>
                 </div>
@@ -24,16 +24,16 @@
                 :address="address"
                 class="dashboard__address"
                 featured
-                :badge="address.default ? 'Default Address' : ''"
+                :badge="address.default ? $t('dashboard.DefaultAddress') : ''"
             >
                 <AppLink :to="$url.accountAddress({ id: 5 })">
-                    Edit Address
+                    {{$t('dashboard.EditAddress')}}
                 </AppLink>
             </AddressCard>
 
             <div class="dashboard__orders card">
                 <div class="card-header">
-                    <h5>Recent Orders</h5>
+                    <h5>{{$t('dashboard.RecentOrders')}}</h5>
                 </div>
                 <div class="card-divider" />
                 <div class="card-table">
@@ -41,10 +41,10 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Order</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    <th>Total</th>
+                                    <th>{{$t('dashboard.Order')}}</th>
+                                    <th>{{$t('dashboard.Date')}}</th>
+                                    <th>{{$t('dashboard.Status')}}</th>
+                                    <th>{{$t('dashboard.Total')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,9 +58,9 @@
                                     <td>{{ order.status }}</td>
                                     <td>
                                         {{ $price(order.total) }}
-                                        for
+                                        {{$t('dashboard.for')}}
                                         {{ order.quantity }}
-                                        item(s)
+                                        {{$t('dashboard.item')}}
                                     </td>
                                 </tr>
                             </tbody>

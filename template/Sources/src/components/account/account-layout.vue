@@ -1,11 +1,10 @@
 <template>
     <div>
         <PageHeader
-            title="My Account"
+            :title="$t('header.topbar.acount')"
             :breadcrumb="[
-                {title: 'Home', url: ''},
-                {title: 'Breadcrumb', url: ''},
-                {title: 'My Account', url: ''},
+                {title: $t('home.title'), url: '/'},
+                {title: $t('header.topbar.acount'), url: ''},
             ]"
         />
 
@@ -15,7 +14,7 @@
                     <div class="col-12 col-lg-3 d-flex">
                         <div class="account-nav flex-grow-1">
                             <h4 class="account-nav__title">
-                                Navigation
+                                {{$t('login.dashboard.Navigation')}}
                             </h4>
                             <ul>
                                 <NuxtLink

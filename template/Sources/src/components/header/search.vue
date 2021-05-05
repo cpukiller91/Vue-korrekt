@@ -10,16 +10,16 @@
         ]"
     >
         <div class="search__body">
-            <form class="search__form">
+            <form class="search__form" v-on:submit.prevent>
                 <select
                     v-if="location === 'header'"
                     class="search__categories"
-                    aria-label="Category"
+                    :aria-label="$t('header.search.Category')"
                     @change="onCategoryChange"
                     @focus="onCategoryFocus"
                 >
                     <option value="">
-                        All Categories
+                        {{$t('header.search.AllCategories')}}
                     </option>
                     <option
                         v-for="category in categories"
@@ -30,17 +30,19 @@
                     </option>
                 </select>
                 <input
+
                     ref="input"
                     class="search__input"
                     name="search"
-                    placeholder="Search over 10,000 products"
-                    aria-label="Site search"
+                    :placeholder="$t('header.search.Searchover')"
+                    :aria-label="$t('header.search.Sitesearch')"
                     type="text"
                     autocomplete="off"
                     :value="query"
                     @input="onQueryInput"
                     @focus="onQueryFocus"
                     @keydown.esc="onQueryEscape"
+                    @keyup.enter.prevent="enterClicked()"
                 >
                 <button class="search__button search__button--type--submit" type="submit">
                     <Search20Svg />
@@ -88,7 +90,7 @@
                             <AsyncAction v-slot:default="{ run, isLoading }" :action="() => $store.dispatch('cart/add', { product })">
                                 <button
                                     type="button"
-                                    title="Add to cart"
+                                    :title="$t('cart.Addtocart')"
                                     :class="[
                                         'btn btn-primary btn-sm btn-svg-icon',
                                         {'btn-loading': isLoading}

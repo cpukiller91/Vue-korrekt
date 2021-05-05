@@ -1,10 +1,10 @@
 <template>
     <div>
         <PageHeader
-            title="Comparison"
+            :title="$t('products.Comparison')"
             :breadcrumb="[
-                { title: 'Home', url: '' },
-                { title: 'Comparison', url: '' },
+                { title: $t('home.title'), url: '/' },
+                { title: $t('products.Comparison'), url: '' },
             ]"
         />
 
@@ -13,11 +13,11 @@
                 <div class="container">
                     <div class="block-empty__body">
                         <div class="block-empty__message">
-                            You have not chosen any products to compare!
+                            {{$t('products.YouHaveNot')}}
                         </div>
                         <div class="block-empty__actions">
                             <AppLink to="/" class="btn btn-primary btn-sm">
-                                Continue
+                                {{$t('cart.Continue')}}
                             </AppLink>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                         <table class="compare-table">
                             <tbody>
                                 <tr>
-                                    <th>Product</th>
+                                    <th>{{$t('cart.Product')}}</th>
                                     <td v-for="product in items" :key="product.id">
                                         <AppLink :to="$url.product(product)" class="compare-table__product-link">
                                             <div
@@ -49,18 +49,18 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Rating</th>
+                                    <th>{{$t('cart.Rating')}}</th>
                                     <td v-for="product in items" :key="product.id">
                                         <div class="compare-table__product-rating">
                                             <Rating :value="product.rating" />
                                         </div>
                                         <div class=" compare-table__product-rating-legend">
-                                            {{ product.reviews }} Reviews
+                                            {{ product.reviews }} {{$t('cart.Reviews')}}
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Availability</th>
+                                    <th>{{$t('cart.Availability')}}</th>
                                     <td v-for="product in items" :key="product.id">
                                         <span
                                             v-if="product.availability === 'in-stock'"
@@ -71,13 +71,13 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Price</th>
+                                    <th>{{$t('cart.Price')}}</th>
                                     <td v-for="product in items" :key="product.id">
                                         {{ $price(product.price) }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Add To Cart</th>
+                                    <th>{{$t('cart.Addtocart')}}</th>
                                     <td v-for="product in items" :key="product.id">
                                         <AsyncAction
                                             v-slot:default="{ run, isLoading }"
@@ -91,7 +91,7 @@
                                                 ]"
                                                 @click="run"
                                             >
-                                                Add To Cart
+                                                {{$t('cart.Addtocart')}}
                                             </button>
                                         </AsyncAction>
                                     </td>
@@ -117,7 +117,7 @@
                                                 ]"
                                                 @click="run"
                                             >
-                                                Remove
+                                                {{$t('cart.Remove')}}
                                             </button>
                                         </AsyncAction>
                                     </td>

@@ -4,7 +4,7 @@
             <WidgetCategories :categories="categories" location="shop" />
         </div>
         <div class="block-sidebar__item d-none d-lg-block">
-            <WidgetProducts title="Latest Products" :products="latestProducts" />
+            <WidgetProducts :title="$t('category.LatestProducts')" :products="latestProducts" />
         </div>
     </div>
 </template>

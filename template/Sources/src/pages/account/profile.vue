@@ -2,52 +2,52 @@
     <AccountLayout>
         <div class="card">
             <div class="card-header">
-                <h5>Edit Profile</h5>
+                <h5>{{$t('Profile.EditProfile')}}</h5>
             </div>
             <div class="card-divider" />
             <div class="card-body">
                 <div class="row no-gutters">
                     <div class="col-12 col-lg-7 col-xl-6">
                         <div class="form-group">
-                            <label for="profile-first-name">First Name</label>
+                            <label for="profile-first-name">{{$t('checkout.FirstName')}}</label>
                             <input
                                 id="profile-first-name"
                                 type="text"
                                 class="form-control"
-                                placeholder="First Name"
+                                :placeholder="$t('checkout.FirstName')"
                             >
                         </div>
                         <div class="form-group">
-                            <label for="profile-last-name">Last Name</label>
+                            <label for="profile-last-name">{{$t('checkout.LastName')}}</label>
                             <input
                                 id="profile-last-name"
                                 type="text"
                                 class="form-control"
-                                placeholder="Last Name"
+                                :placeholder="$t('checkout.LastName')"
                             >
                         </div>
                         <div class="form-group">
-                            <label for="profile-email">Email Address</label>
+                            <label for="profile-email">{{$t('checkout.EmailAddress')}}</label>
                             <input
                                 id="profile-email"
                                 type="email"
                                 class="form-control"
-                                placeholder="Email Address"
+                                :placeholder="$t('checkout.EmailAddress')"
                             >
                         </div>
                         <div class="form-group">
-                            <label for="profile-phone">Phone Number</label>
+                            <label for="profile-phone">{{$t('checkout.Phone')}}</label>
                             <input
                                 id="profile-phone"
                                 type="text"
                                 class="form-control"
-                                placeholder="Phone Number"
+                                :placeholder="$t('checkout.Phone')"
                             >
                         </div>
 
                         <div class="form-group mt-5 mb-0">
                             <button type="button" class="btn btn-primary">
-                                Save
+                                {{$t('Profile.Save')}}
                             </button>
                         </div>
                     </div>

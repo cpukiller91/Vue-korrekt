@@ -111,7 +111,8 @@ const config: NuxtConfig = {
         '~/plugins/currency.ts',
         '~/plugins/i18n.ts',
         { src: '~/plugins/notifications.ts', ssr: false },
-        { src: '~/plugins/local-storage.ts', ssr: false }
+        { src: '~/plugins/local-storage.ts', ssr: false },
+        { src: '~/plugins/vuex-cache.js', ssr: false }
     ],
     /*
     ** Nuxt.js dev-modules
@@ -128,7 +129,24 @@ const config: NuxtConfig = {
         '@nuxtjs/axios',
         '@nuxtjs/auth-next',
         '@nuxtjs/toast',
+        '@nuxtjs/strapi',
+        // '@nuxt/content',
+        // '@nuxtjs/sitemap',
+        // '@nuxtjs/robots',
+        // '@nuxtjs/feed',
+        // '@nuxtjs/gtm',
+        // '@nuxtjs/google-analytics',
+        //'vuex-cache'
     ],
+    // feed: [
+    //     // Your feeds here
+    // ],
+    // content: {
+    //     // Options
+    // },
+    // strapi: {
+    //     // Options
+    // },
     /*
     ** Build configuration
     */

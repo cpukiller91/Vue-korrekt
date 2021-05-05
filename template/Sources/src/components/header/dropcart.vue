@@ -12,7 +12,7 @@
             <div class="dropcart__body">
                 <div v-if="type === 'offcanvas'" class="dropcart__header">
                     <div class="dropcart__title">
-                        Shopping Cart
+                        {{$t('cart.ShoppingCart')}}
                     </div>
                     <button class="dropcart__close" type="button" @click="$store.commit('offcanvasCart/close')">
                         <Cross12Svg />
@@ -67,7 +67,7 @@
                         <tbody>
                             <template v-if="totals.length > 0">
                                 <tr>
-                                    <th>Subtotal</th>
+                                    <th>{{$t('cart.Subtotal')}}</th>
                                     <td>{{ $price(subtotal) }}</td>
                                 </tr>
                                 <tr v-for="(item, index) in totals" :key="index">
@@ -77,7 +77,7 @@
                             </template>
 
                             <tr>
-                                <th>Total</th>
+                                <th>{{$t('cart.Total')}}</th>
                                 <td>{{ $price(total) }}</td>
                             </tr>
                         </tbody>
@@ -86,10 +86,10 @@
 
                 <div class="dropcart__buttons">
                     <AppLink :to="$url.cart()" class="btn btn-secondary">
-                        View Cart
+                        {{$t('checkout.ViewCart')}}
                     </AppLink>
                     <AppLink :to="$url.checkout()" class="btn btn-primary">
-                        Checkout
+                        {{$t('checkout.Checkout')}}
                     </AppLink>
                 </div>
             </div>

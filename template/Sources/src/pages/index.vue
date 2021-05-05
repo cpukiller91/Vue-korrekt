@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <BlockSlideshow layout="with-departments" :slides="slides"/>
 
         <BlockFeatures />
@@ -7,10 +8,7 @@
         <BlockProductsCarouselContainer
             v-slot:default="{ products, isLoading, tabs, handleTabChange }"
             :tabs="[
-                { id: 1, name: 'All', categorySlug: undefined },
-                { id: 2, name: 'Power Tools', categorySlug: 'power-tools' },
-                { id: 3, name: 'Hand Tools', categorySlug: 'hand-tools' },
-                { id: 4, name: 'Plumbing', categorySlug: 'plumbing' }
+                { id: 1, name: 'Всі', categorySlug: undefined }
             ]"
             :initial-data="featuredProducts"
             :data-source="featuredProductsSource"
@@ -43,10 +41,7 @@
         <BlockProductsCarouselContainer
             v-slot:default="{ products, isLoading, tabs, handleTabChange }"
             :tabs="[
-                { id: 1, name: 'All', categorySlug: undefined },
-                { id: 2, name: 'Power Tools', categorySlug: 'power-tools' },
-                { id: 3, name: 'Hand Tools', categorySlug: 'hand-tools' },
-                { id: 4, name: 'Plumbing', categorySlug: 'plumbing' }
+                { id: 1, name: 'Всі', categorySlug: undefined }
             ]"
             :initial-data="latestProducts"
             :data-source="latestProductsSource"
@@ -61,16 +56,17 @@
                 @groupClick="handleTabChange"
             />
         </BlockProductsCarouselContainer>
-
+<!--
         <BlockPosts
             :title="$t('home.block.latestNews')"
             layout="list"
             :posts="posts"
         />
-
+-->
         <BlockBrands :brands="brands"/>
 
         <BlockProductColumns :columns="columns" />
+
     </div>
 </template>
 
@@ -83,6 +79,7 @@ import { IProduct } from '~/interfaces/product'
 import { ICategory } from '~/interfaces/category'
 import { IPost } from '~/interfaces/post'
 import { IBrand } from '~/interfaces/brand'
+
 interface SlideImage {
     ltr: string
     rtl: string
@@ -98,6 +95,7 @@ interface Slide {
 
 import { BlockProductColumnsItem } from '~/interfaces/components'
 import shopApi from '~/api/shop'
+//import VueBarcode from '~/components/barcode/barcode.vue'
 import BlockSlideshow from '~/components/blocks/block-slideshow.vue'
 import BlockFeatures from '~/components/blocks/block-features.vue'
 import BlockProductsCarousel from '~/components/blocks/block-products-carousel.vue'
@@ -127,6 +125,7 @@ async function loadColumns (locale:string,translate:any) {
 
 @Component({
     components: {
+        //VueBarcode,
         BlockSlideshow,
         BlockFeatures,
         BlockProductsCarousel,
@@ -140,6 +139,7 @@ async function loadColumns (locale:string,translate:any) {
     },
 
     async asyncData (context: Context) {
+
         context.store.commit('options/setHeaderLayout', 'default')
         context.store.commit('options/setDropcartType', 'dropdown')
         //
@@ -159,10 +159,11 @@ async function loadColumns (locale:string,translate:any) {
         const brands = fetch(`https://`+context.store.getters['locale/language'].locale+`.korrekt.com.ua/brands/mod`).then((response) => response.json());
         const slides = fetch(`https://`+context.store.getters['locale/language'].locale+`.korrekt.com.ua/sliders/mod`).then((response) => response.json());
         const CatListHome = await fetch(`https://`+context.store.getters['locale/language'].locale+`.korrekt.com.ua/categories/categoryhomelist`).then((response) => response.json());
-        //const departments = await fetch(`https://`+context.store.getters['locale/language'].locale+`.korrekt.com.ua/products/getdepartments`).then((response) => response.json());
-        context.store.commit('category/setCategoryHome',CatListHome )
-        //context.store.commit('departments/setDepartments',departments )
 
+        context.store.commit('category/setCategoryHome',CatListHome )
+        const departments = await fetch(`https://`+context.store.getters['locale/language'].locale+`.korrekt.com.ua/products/getdepartments`).then((response) => response.json());
+        context.store.commit('departments/setDepartments',departments )
+        //context.store.dispatch("departments/reloadStore",departments)
         //----//
         //console.log("async--",departments)
         return {
@@ -223,16 +224,17 @@ export default class HomePageOne extends Vue {
 
     columns: BlockProductColumnsItem[] | null = []
 
-    async mounted () {
+    mounted () {
         const LangArray = this.$i18n.messages
+        console.log(this.$store.getters['departments/all'])
         // fetch(`https://`+this.$store.getters['locale/language'].locale+`.korrekt.com.ua/products/getdepartments`)
         //     .then((response) => {
         //
         //         this.$store.commit('departments/setDepartments',response.json() )
         //     });
-        const departments = await fetch(`https://`+this.$store.getters['locale/language'].locale+`.korrekt.com.ua/products/getdepartments`).then((response) => response.json());
+        //const departments = await fetch(`https://`+this.$store.getters['locale/language'].locale+`.korrekt.com.ua/products/getdepartments`).then((response) => response.json());
         //this.$store.commit('departments/setDepartments',departments )
-        this.$store.dispatch("departments/reloadStore",departments)
+        this.$store.dispatch("departments/reloadStore")
         //console.log("locale:",this.$store.getters['locale/language'].locale)
         //console.log("data111", )
 

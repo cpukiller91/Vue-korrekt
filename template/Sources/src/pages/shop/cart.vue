@@ -2,7 +2,7 @@
     <div>
         <client-only>
             <PageHeader
-                title="Shopping Cart"
+                :title="$t('cart.ShoppingCart')"
                 :breadcrumb="[
                     { title: 'Home', url: '' },
                     { title: 'Shopping Cart', url: '' },
@@ -13,11 +13,11 @@
                 <div class="container">
                     <div class="block-empty__body">
                         <div class="block-empty__message">
-                            Your shopping cart is empty!
+                            {{$t('cart.YourShopping')}}
                         </div>
                         <div class="block-empty__actions">
-                            <AppLink to="/" class="btn btn-primary btn-sm">
-                                Continue
+                            <AppLink to="/shop/catalog" class="btn btn-primary btn-sm">
+                                {{$t('cart.Continue')}}
                             </AppLink>
                         </div>
                     </div>
@@ -30,21 +30,21 @@
                         <thead class="cart-table__head">
                             <tr class="cart-table__row">
                                 <th class="cart-table__column cart-table__column--image">
-                                    Image
+                                    {{$t('cart.Image')}}
                                 </th>
                                 <th class="cart-table__column cart-table__column--product">
-                                    Product
+                                    {{$t('cart.Product')}}
                                 </th>
                                 <th class="cart-table__column cart-table__column--price">
-                                    Price
+                                    {{$t('cart.Price')}}
                                 </th>
                                 <th class="cart-table__column cart-table__column--quantity">
-                                    Quantity
+                                    {{$t('cart.Quantity')}}
                                 </th>
                                 <th class="cart-table__column cart-table__column--total">
-                                    Total
+                                    {{$t('cart.Total')}}
                                 </th>
-                                <th class="cart-table__column cart-table__column--remove" aria-label="Remove" />
+                                <th class="cart-table__column cart-table__column--remove" :aria-label="$t('cart.Remove')" />
                             </tr>
                         </thead>
                         <tbody class="cart-table__body">
@@ -67,17 +67,17 @@
                                         </li>
                                     </ul>
                                 </td>
-                                <td class="cart-table__column cart-table__column--price" data-title="Price">
+                                <td class="cart-table__column cart-table__column--price" :data-title="$t('cart.Price')">
                                     {{ $price(item.price) }}
                                 </td>
-                                <td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
+                                <td class="cart-table__column cart-table__column--quantity" :data-title="$t('cart.Quantity')">
                                     <InputNumber
                                         :value="getItemQuantity(item)"
                                         :min="1"
                                         @input="handleChangeQuantity(item, $event)"
                                     />
                                 </td>
-                                <td class="cart-table__column cart-table__column--total" data-title="Total">
+                                <td class="cart-table__column cart-table__column--total" :data-title="$t('cart.Total')">
                                     {{ $price(item.total) }}
                                 </td>
                                 <td class="cart-table__column cart-table__column--remove">
@@ -102,20 +102,20 @@
                     </table>
                     <div class="cart__actions">
                         <form class="cart__coupon-form">
-                            <label for="input-coupon-code" class="sr-only">Password</label>
+                            <label for="input-coupon-code" class="sr-only">{{$t('cart.Password')}}</label>
                             <input
                                 id="input-coupon-code"
                                 class="form-control"
                                 type="text"
-                                placeholder="Coupon Code"
+                                :placeholder="$t('cart.CouponCode')"
                             >
                             <button type="submit" class="btn btn-primary">
-                                Apply Coupon
+                                {{$t('cart.ApplyCoupon')}}
                             </button>
                         </form>
                         <div class="cart__buttons">
-                            <AppLink href="/" class="btn btn-light">
-                                Continue Shopping
+                            <AppLink href="/shop/catalog" class="btn btn-light">
+                                {{$t('cart.ContinueShopping')}}
                             </AppLink>
                             <AsyncAction
                                 v-slot:default="{ run, isLoading }"
@@ -130,7 +130,8 @@
                                     :disabled="!cartNeedUpdate()"
                                     @click="run"
                                 >
-                                    Update Cart
+                                    {{$t('cart.UpdateCart')}}
+
                                 </button>
                             </AsyncAction>
                         </div>
@@ -141,13 +142,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h3 class="card-title">
-                                        Cart Totals
+                                        {{$t('cart.CartTotals')}}
+
                                     </h3>
                                     <table class="cart__totals">
                                         <template>
                                             <thead class="cart__totals-header">
                                                 <tr>
-                                                    <th>Subtotal</th>
+                                                    <th>{{$t('cart.Subtotal')}}</th>
                                                     <td>{{ $price(cart.subtotal) }}</td>
                                                 </tr>
                                             </thead>
@@ -161,7 +163,8 @@
                                                             class="cart__calc-shipping"
                                                         >
                                                             <AppLink to="/">
-                                                                Calculate Shipping
+                                                                {{$t('cart.CalculateShipping')}}
+
                                                             </AppLink>
                                                         </div>
                                                     </td>
@@ -170,7 +173,7 @@
                                         </template>
                                         <tfoot class="cart__totals-footer">
                                             <tr>
-                                                <th>Total</th>
+                                                <th>{{$t('cart.Total')}}</th>
                                                 <td>{{ $price(cart.total) }}</td>
                                             </tr>
                                         </tfoot>
@@ -179,7 +182,7 @@
                                         :to="$url.checkout()"
                                         class="btn btn-primary btn-xl btn-block cart__checkout-button"
                                     >
-                                        Proceed to checkout
+                                        {{$t('cart.ProceedToCheckout')}}
                                     </AppLink>
                                 </div>
                             </div>

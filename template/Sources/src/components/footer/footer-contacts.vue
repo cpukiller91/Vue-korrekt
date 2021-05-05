@@ -1,12 +1,11 @@
 <template>
     <div class="site-footer__widget footer-contacts">
         <h5 class="footer-contacts__title">
-            Contact Us
+            {{$t("footer.Contact")}}
         </h5>
 
         <div class="footer-contacts__text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in feugiat lorem. Pellentque ac placerat
-            tellus.
+            {{$t("footer.ContactDesc")}}
         </div>
 
         <ul class="footer-contacts__contacts">
@@ -20,11 +19,11 @@
             </li>
             <li>
                 <i class="footer-contacts__icon fas fa-mobile-alt" />
-                {{ theme.contacts.phone }}, {{ theme.contacts.phone }}
+                {{ theme.contacts.phone }}
             </li>
             <li>
                 <i class="footer-contacts__icon far fa-clock" />
-                Mon-Sat 10:00pm - 7:00pm
+                {{$t("footer.MonSat")}}
             </li>
         </ul>
     </div>
@@ -38,6 +37,11 @@ import theme from '~/data/theme'
 @Component
 export default class FooterContacts extends Vue {
     theme = theme
+    async mounted(){
+        const themes = await fetch(`https://`+this.$store.getters['locale/language'].locale+`.korrekt.com.ua/themes-get`).then((response) => response.json());
+        this.theme = themes
+        //console.log(themes)
+    }
 }
 
 </script>

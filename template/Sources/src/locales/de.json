@@ -1,6 +1,131 @@
 {
 
+  "products": {
+    "YouHaveNot": "You have not chosen any products to compare!",
+    "Comparison": "Comparison",
+
+    "Wishlist": "Wishlist",
+    "Image": "Image",
+    "StockStatus": "Stock Status",
+    "InStock": "In Stock",
+    "YourWishList": "Your wish list is empty!",
+
+    "Nomatchingitems": "No matching items",
+    "TryResettingTheFilters": "Try resetting the filters",
+    "ResetFilters": "Reset filters",
+    "Showing": "Showing",
+    "of": "of",
+    "products": "products",
+    "Default": "Default",
+    "NameAZ": "Name (A-Z)",
+    "NameZA": "Name (Z-A)",
+    "Show": "Show",
+    "SortBy": "Sort By"
+  },
+  "Reset": "Reset",
+  "category": {
+    "Filters": "Filters",
+    "LatestProducts": "Latest Products"
+  },
+  "dashboard": {
+    "RecentOrders": "Recent Orders",
+    "Order": "Order",
+    "Date": "Date",
+    "Status": "Status",
+    "Total": "Total",
+    "for": "for",
+    "item": "item(s)",
+    "EditAddress": "Edit Address",
+    "DefaultAddress": "Default Address"
+  },
+  "Profile": {
+    "EditProfile": "Edit Profile",
+    "Save": "Save"
+  },
+  "checkout": {
+    "OrderID": "Order ID",
+    "TrackOrder": "Track Order",
+    "TrackOrderDesc": "Vestibulum sem odio, ullamcorper a imperdiet tincidunt sed magna felis, consequat a erat ut, rutrum finibus odio.",
+    "ViewCart": "View Cart",
+    "Checkout": "Checkout",
+    "ReturningCustomer": "Returning customer?",
+    "ClickHereToLogin": "Click here to login",
+    "BillingDetails": "Billing details",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "CompanyName": "Company Name",
+    "Country": "Country",
+    "SelectACountry": "Select a country..",
+    "StreetAddress": "Street Address",
+    "Apartment": "Apartment, suite, unit etc.",
+    "TownCity": "Town / City",
+    "StateCounty": "State / County",
+    "PostcodeZIP": "Postcode / ZIP",
+    "EmailAddress": "Email address",
+    "Phone": "Phone",
+    "CreateAnAccount": "Create an account?",
+    "ShippingDetails": "Shipping Details",
+    "ShipTo": "Ship to a different address?",
+    "OrderNotes" : "Order notes",
+    "YourOrder": "Your Order",
+    "IHaveRead": "I have read and agree to the website",
+    "TermsAndConditions": " terms and conditions",
+    "PlaceOrder": "Place Order",
+    "Optional": "Optional"
+  },
+  "cart": {
+    "Rating": "Rating",
+    "Sale": "Sale",
+    "Hot": "Hot",
+    "New": "New",
+    "Reviews": "Reviews",
+    "Quantity": "Quantity",
+    "Wishlist": "Wishlist",
+    "Compare": "Compare",
+    "Availability": "Availability",
+    "Addtocart": "Add to cart",
+    "ShoppingCart": "Shopping Cart",
+    "YourShopping": " Your shopping cart is empty!",
+    "Continue": "Continue",
+    "Image": "Image",
+    "Product": "Product",
+    "Price": "Price",
+    "Total": "Total",
+    "Remove": "Remove",
+    "Password": "Password",
+    "ChangePassword": "Change Password",
+    "CurrentPassword": "Current Password",
+    "NewPassword": "New Password",
+    "ReenterNewPassword": "Reenter New Password",
+    "Change": "Change",
+    "CouponCode": "Coupon Code",
+    "ApplyCoupon": "Apply Coupon",
+    "ContinueShopping": "Continue Shopping",
+    "UpdateCart": "Update Cart",
+    "CartTotals": " Cart Totals",
+    "Subtotal": "Subtotal",
+    "CalculateShipping": "Calculate Shipping",
+    "ProceedToCheckout": "Proceed to checkout"
+
+
+  },
+  "footer":{
+    "newsletter":"Newsletter",
+    "praesent":"Praesent pellentesque volutpat ex, vitae auctor lorem pulvinar mollis felis at lacinia.",
+    "EmailAddress":"Email Address",
+    "Subscribe": "Subscribe",
+    "Follow": "Follow us on social networks",
+    "Contact": "Contact Us",
+    "ContactDesc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in feugiat lorem. Pellentque ac placerat\n tellus.",
+    "MonSat": "Mon-Sat 10:00pm - 7:00pm"
+  },
   "header": {
+    "search": {
+      "Searchover":"Search over 10,000 products",
+      "Sitesearch":"Site search",
+      "AllCategories":"All Categories",
+      "Category":"Category"
+    },
     "departments": "Shop By Category",
     "topbar": {
       "aboutUs": "About Us",
@@ -14,6 +139,9 @@
     }
   },
   "login": {
+    "dashboard": {
+      "Navigation": "Navigation"
+    },
     "page": {
       "cardTitle": "Вхід",
       "loginEmaill": "Email адреса",
@@ -32,6 +160,8 @@
     }
   },
   "home":{
+    "HelpCustomer": "Підтримка клієнтів",
+    "title": "Home",
     "columns": {
       "topRatedProducts":"Top Rated Products",
       "specialOffers":"Special Offers",

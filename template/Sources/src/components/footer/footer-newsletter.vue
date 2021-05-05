@@ -1,28 +1,28 @@
 <template>
     <div class="site-footer__widget footer-newsletter">
         <h5 class="footer-newsletter__title">
-            Newsletter
+            {{$t("footer.newsletter")}}
         </h5>
         <div class="footer-newsletter__text">
-            Praesent pellentesque volutpat ex, vitae auctor lorem pulvinar mollis felis at lacinia.
+            {{$t("footer.praesent")}}
         </div>
 
         <form action="" class="footer-newsletter__form">
-            <label class="sr-only" for="footer-newsletter-address">Email Address</label>
+            <label class="sr-only" for="footer-newsletter-address">{{$t("footer.EmailAddress")}}</label>
             <input
                 id="footer-newsletter-address"
                 class="footer-newsletter__form-input form-control"
                 type="text"
-                placeholder="Email Address..."
+                :placeholder="$t('footer.EmailAddress')"
             >
 
             <button class="footer-newsletter__form-button btn btn-primary">
-                Subscribe
+                {{$t("footer.Subscribe")}}
             </button>
         </form>
 
         <div class="footer-newsletter__text footer-newsletter__text--social">
-            Follow us on social networks
+            {{$t("footer.Follow")}}
         </div>
 
         <social-links class="footer-newsletter__social-links" shape="circle" />
